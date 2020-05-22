@@ -11,9 +11,9 @@
 
 
 // possible distance logic
-// sadfasf= 234: sdfasdf = 38834
+// x= 234: y = 38834
 
-// if truck within 50 sadfasf
+// if truck within 50 x
 // then 
 
 // x miles near you 

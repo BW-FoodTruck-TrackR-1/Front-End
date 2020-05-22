@@ -75,3 +75,48 @@ export const addTruck = (truck) => {
     }
   }
   
+
+
+export const favTruck = (truck) => {
+  const request =  axiosWithAuth()
+  .post('api', truck)
+
+  return (dispatch) => {
+    dispatch({
+      type: 'FAVING_TRUCK'
+    })
+    request.then(response => {
+      dispatch({
+        type: 'FAV_TRUCK_SUCCESS',
+        payload: response.data
+      })
+    }).catch(error => {
+      dispatch({
+        type: 'FAV_TRUCK_FAIL',
+        payload: error.message
+      })
+    })
+  }
+}
+
+export const deleteFavedTruck = (id) => {
+  const request =  axiosWithAuth()
+  .delete(`api/${id}`)
+
+  return (dispatch) => {
+    dispatch({
+      type: 'DELETING_FAVED_TRUCK'
+    })
+    request.then(response => {
+      dispatch({
+        type: 'DELETED_FAVED_TRUCK_SUCCESS',
+        payload: response.data
+      })
+    }).catch(error => {
+      dispatch({
+        type: 'ERR',
+        payload: error.message
+      })
+    })
+  }
+}

@@ -10,8 +10,9 @@ import {
   FAVING_TRUCK,
   FAV_TRUCK_SUCCESS,
   FAV_TRUCK_FAIL,
-  FAV_TRUCK_DELETE
-} from "../actions";
+  DELETING_FAVED_TRUCK,
+  DELETED_FAVED_TRUCK_SUCCESS
+} from "../actions/TruckActions";
 
 const initialStateOperator = {
   isfetchingOperator: false,
@@ -129,6 +130,7 @@ export const DinerReducer = (state = initialStateDiner, action) => {
     // FAVING_TRUCK,
     // FAV_TRUCK_SUCCESS,
     // FAV_TRUCK_FAIL
+    // FAV_TRUCK_DELETE
 
     //   case CASE_GOES_HERE:
     //     return {
@@ -175,16 +177,25 @@ export const DinerReducer = (state = initialStateDiner, action) => {
           isfetchingDiner: false,
           error: "tHeRe wAs An ErRoR",
         };
-        case FAV_TRUCK_DELETE:
+        case DELETING_FAVED_TRUCK:
       return {
         ...state,
-        isfetchingDiner: false,
+        isfetchingDiner: true,
         fetched: true,
-        faved:true,
+        faved:false,
         favoriteTrucks:action.payload,
         allOtherTrucks: action.payload,
       };
-
+     
+        case DELETED_FAVED_TRUCK_SUCCESS:
+          return {
+            ...state,
+            isfetchingDiner: false,
+            fetched: true,
+            faved:true,
+            favoriteTrucks:action.payload,
+            allOtherTrucks: action.payload,
+          };
     default:
       return state;
   }
