@@ -4,6 +4,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import TruckList from './TruckListjs'
 import SearchTrucks from './SearchTrucks'
 import FavTrucks from './FavTrucks.js'
+import { addTruck } from "../actions/TruckActions";
 
 function DinerDashboard(){
 
@@ -20,7 +21,8 @@ function DinerDashboard(){
 {/* <TruckList/> */}
 
 
-
+// addTruck
+// updateMenu
 
 
 
