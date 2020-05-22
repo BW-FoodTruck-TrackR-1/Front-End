@@ -1,11 +1,13 @@
-import axios from 'axios'
+
+import {axiosWithAuth} from "../utils/AxiosWithAuth";
 
 const FETCHING_TRUCKS = 'FETCHING_TRUCKS'
 const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS'
 const FETCHING_TRUCKS_FAIL = 'FETCHING_TRUCKS_FAIL'
 
 export const getTrucks = () => {
-    const truckrequest = axios.get('api ')
+    const truckrequest =  axiosWithAuth()
+    .get('api ')
 
     return (dispatch) => {
         dispatch({
@@ -30,7 +32,8 @@ export const getTrucks = () => {
 
 
 export const addTruck = (truck) => {
-    const request = axios.post('api', truck)
+    const request =  axiosWithAuth()
+    .post('api', truck)
   
     return (dispatch) => {
       dispatch({
@@ -51,7 +54,8 @@ export const addTruck = (truck) => {
   }
   
   export const deleteTruck = (id) => {
-    const request = axios.delete(`api/${id}`)
+    const request =  axiosWithAuth()
+    .delete(`api/${id}`)
   
     return (dispatch) => {
       dispatch({
