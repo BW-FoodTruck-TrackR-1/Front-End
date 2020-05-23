@@ -21,15 +21,28 @@ const StyledLink = styled(Link)`
         margin-right: 40px;
     }`
 export default function Register(props){
-const[formstate, setformstate]=useState()
-const formSubmit = e =>{
+const[dinerState, setDinerState]=useState()
+const[operatorState, setOperatorState]=useState()
+
+
+const dinerSubmit = e =>{
     e.preventDefault();
     console.log("form submitted");
     axios
-        .post('https://reqres.in/api/users', formstate)
+        .post('https://reqres.in/api/users', dinerState)
         .then(response => props.use(response.data))
         .catch(err => console.log(err));
 }
+
+const operatorSubmit = e =>{
+    e.preventDefault();
+    console.log("form submitted");
+    axios
+        .post('https://reqres.in/api/users', operatorState)
+        .then(response => props.use(response.data))
+        .catch(err => console.log(err));
+}
+
 
 
 
@@ -41,12 +54,12 @@ const formSubmit = e =>{
     <StyledLink to="/operatorreg">Operator registration</StyledLink>
     <Route path="/dinerreg">
         <Diner 
-            formSubmit={formSubmit} 
+            formSubmit={dinerSubmit} 
             />
     </Route>
    <Route path="/operatorreg">
         <Operator 
-            formSubmit={formSubmit} 
+            formSubmit={operatorSubmit} 
              />
     </Route>
         </div>

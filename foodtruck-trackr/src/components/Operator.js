@@ -8,7 +8,7 @@ const formSchema = yup.object().shape({
     username: yup.string().required("Please enter a unique username"),
     password: yup.string().required("Please enter password"),
     email: yup.string().email("must be a valid email").required("Please enter a email"),
-    terms:yup.boolean().oneOf([false],"Please agree to terms"),
+    terms:yup.boolean().oneOf([false], "Please agree to terms"),
     trucksOwned:yup.array()
  })
 
@@ -19,8 +19,9 @@ const [formState, setFormState]=useState({
     username:"",
     password:"",
     email:"",
-    terms:"",
-    trucksOwned:[]
+    trucksOwned:[],
+    terms:false
+
 })
 const [error, seterror] = useState({
     name:"",
@@ -112,7 +113,7 @@ const inputChange = e =>{
                     type="checkbox"
                     id="terms"
                     name="terms"
-                    checked={formState.terms}
+                    value={formState.terms}
                     onChange={inputChange}
                     />
                     {error.terms.length > 0 ? <p className = "error">{error.terms}</p> : null}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 
@@ -32,6 +32,16 @@ const [error, seterror] = useState({
     terms: "",
     favoritetrucks: []
 })
+
+/* const [buttonDisabled, setButtonDisabled] = useState(true);
+  
+  useEffect(() => {
+    formSchema.isValid(formTate).then(valid => {
+      setButtonDisabled(!valid);
+    });
+  }, [formTate]);
+
+*/
 const validate =(e) => { 
     yup
       .reach(formSchema, e.target.name)
@@ -129,7 +139,7 @@ console.log(props)
                     />
                     {error.terms.length > 0 ? <p className = "error">{error.terms}</p> : null}
                     <br/>
-                <button type="submit">Submit</button>
+                <button type="submit" >Submit</button>
                 </div>
                 
             
