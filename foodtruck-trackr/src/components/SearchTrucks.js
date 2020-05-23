@@ -7,6 +7,8 @@
 
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/AxiosWithAuth";
+import { connect } from 'react-redux'
+
 
 
 export const getAllTrucks = async () => {
@@ -39,16 +41,19 @@ function SearchTrucks() {
     );
   }, [search]);
 
+
+
   return (
     <div className="truckcard">
       <form>
         <input
           onChange={onChange}
-          id="name"
+          id="search"
           class="searchform"
           type="text"
-          aria-describedby="name-desc"
+          onSubmit={onSubmit}
         ></input>
+        <button type='submit'></button>
       </form>
 
       {filterData.map((t, index) => (
@@ -64,4 +69,6 @@ function SearchTrucks() {
     </div>
   );
 }
-export default SearchTrucks;
+export default connect(
+  state => state,
+)(SearchTrucks);
