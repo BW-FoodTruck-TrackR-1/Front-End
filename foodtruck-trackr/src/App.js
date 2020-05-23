@@ -18,7 +18,6 @@ const use =(object) =>{
 }
 
 export default App;
-=======
 // import React, { Component } from 'react';
 // import './App.css';
 // import { connect } from 'react-redux';
@@ -133,3 +132,4 @@ export default App;
 //   addSmurf,
 //   delSmurf
 // })(App);
+
