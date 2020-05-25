@@ -1,23 +1,23 @@
 
 import {axiosWithAuth} from "../utils/AxiosWithAuth";
 
-const FETCHING_TRUCKS = 'FETCHING_TRUCKS'
-const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS'
-const FETCHING_TRUCKS_FAIL = 'FETCHING_TRUCKS_FAIL'
+export const FETCHING_TRUCKS = 'FETCHING_TRUCKS'
+export const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS'
+export const FETCHING_TRUCKS_FAIL = 'FETCHING_TRUCKS_FAIL'
 
-const ADDING_TRUCK = 'ADDING_TRUCK'
-const ADDED = 'ADDDED'
+export const ADDING_TRUCK = 'ADDING_TRUCK'
+export const ADDED = 'ADDDED'
 
-const DELETING_TRUCK = 'DELETING_TRUCK'
-const DELETED = 'DELETED'
-const ERR = 'ERR'
+export const DELETING_TRUCK = 'DELETING_TRUCK'
+export const DELETED = 'DELETED'
+export const ERR = 'ERR'
 
-const FAVING_TRUCK = 'FAVING_TRUCK'
-const FAV_TRUCK_SUCCESS = 'FAV_TRUCK_SUCCESS'
-const FAV_TRUCK_FAIL ='FAV_TRUCK_FAIL'
+export const FAVING_TRUCK = 'FAVING_TRUCK'
+export const FAV_TRUCK_SUCCESS = 'FAV_TRUCK_SUCCESS'
+export const FAV_TRUCK_FAIL ='FAV_TRUCK_FAIL'
 
-const DELETING_FAVED_TRUCK = 'DELETING_FAVED_TRUCK'
-const DELETING_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
+export const DELETING_FAVED_TRUCK = 'DELETING_FAVED_TRUCK'
+export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
 
 export const getTrucks = () => {
@@ -124,7 +124,7 @@ export const deleteFavedTruck = (id) => {
     })
     request.then(response => {
       dispatch({
-        type: DELETING_FAVED_TRUCK_SUCCESS,
+        type: DELETED_FAVED_TRUCK_SUCCESS,
         payload: response.data
       })
     }).catch(error => {
