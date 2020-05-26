@@ -8,6 +8,11 @@ const H1 = styled.h1`
   width: 500px;
   color: #ffc23b;
 `;
+const H2 = styled.h2`
+  font-size: 1.8rem;
+  width: 500px;
+  color: #ffc23b;
+`;
 const Form = styled.form`
   margin: auto;
   margin-top: 50px;
@@ -127,17 +132,17 @@ function Login(props) {
   };
 
   return (
-    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
-      <Container>
-        <div>
-          <H1>
-            FoodTruck TrackR
-            <br />
-            Login
-          </H1>
-        </div>
-      </Container>
-      <Route exact path="/login">
+    <Route path="/login">
+      <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+        <Container>
+          <div>
+            <H1>
+              FoodTruck TrackR
+              <br />
+              Login
+            </H1>
+          </div>
+        </Container>
         <Container>
           <div>
             <StyledLink to="/login/diner">Diner</StyledLink>
@@ -145,78 +150,84 @@ function Login(props) {
           </div>
           <Button2>Sign Up</Button2>
         </Container>
-      </Route>
-      <Route exact path="/login/diner">
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="username">Username</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="username"
-              placeholder="Username"
-              value={diner.username}
-              onChange={changeHandlerDiner}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="password">Password</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={diner.password}
-              onChange={changeHandlerDiner}
-            />
-          </div>
-        </Container>
-        <Container>
-          <Button>Login</Button>
-        </Container>
-        <Container>
-          <StyledLink to="/login">Login Home</StyledLink>
-        </Container>
-      </Route>
-      <Route exact path="/login/operator">
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="username">Username</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="username"
-              placeholder="Username"
-              value={operator.username}
-              onChange={changeHandlerOperator}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="password">Password</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={operator.password}
-              onChange={changeHandlerOperator}
-            />
-          </div>
-        </Container>
-        <Container>
-          <Button>Login</Button>
-        </Container>
-        <Container>
-          <StyledLink to="/login">Login Home</StyledLink>
-        </Container>
-      </Route>
-    </Form>
+        <Route exact path="/login/diner">
+          <Container>
+            <H2>Diner</H2>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="username">Username</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                name="username"
+                placeholder="Username"
+                value={diner.username}
+                onChange={changeHandlerDiner}
+              />
+            </div>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="password">Password</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={diner.password}
+                onChange={changeHandlerDiner}
+              />
+            </div>
+          </Container>
+          <Container>
+            <Button>Login</Button>
+          </Container>
+          <Container>
+            <StyledLink to="/login">Login Home</StyledLink>
+          </Container>
+        </Route>
+        <Route exact path="/login/operator">
+          <Container>
+            <H2>Operator</H2>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="username">Username</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                name="username"
+                placeholder="Username"
+                value={operator.username}
+                onChange={changeHandlerOperator}
+              />
+            </div>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="password">Password</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={operator.password}
+                onChange={changeHandlerOperator}
+              />
+            </div>
+          </Container>
+          <Container>
+            <Button>Login</Button>
+          </Container>
+          <Container>
+            <StyledLink to="/login">Login Home</StyledLink>
+          </Container>
+        </Route>
+      </Form>
+    </Route>
   );
 }
 
