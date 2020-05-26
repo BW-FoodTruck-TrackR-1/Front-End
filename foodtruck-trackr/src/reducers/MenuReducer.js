@@ -47,43 +47,7 @@ import {
           isfetchingMenu: false,
           error: "tHeRe wAs An ErRoR",
         };
-case ADDING_TRUCK:
-      return {
-        ...state,
-        isfetchingOperator: true,
-        fetched: false,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
-      };
-    case ADDED:
-      return {
-        ...state,
-        isfetchingOperator: false,
-        fetched: true,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
-      };
-    case ERR:
-      return {
-        ...state,
-        isfetchingOperator: false,
-        error: "tHeRe wAs An ErRoR",
-      };
-    case DELETING_TRUCK:
-      return {
-        ...state,
-        isfetchingOperator: true,
-        fetched: false,
-      };
-    case DELETED:
-      return {
-        ...state,
-        isfetchingOperator: false,
-        fetched: true,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
-      };
-      // -----
+
       case ADD_MENU_ITEM:
         return {
           ...state,
