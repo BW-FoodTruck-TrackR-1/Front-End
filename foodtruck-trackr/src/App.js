@@ -2,6 +2,9 @@ import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Register from './components/Register.js'
+
+
+
 function App() {
 const[state, setState] = useState([])
 const use =(object) =>{
@@ -18,7 +21,7 @@ const use =(object) =>{
 }
 
 export default App;
-=======
+//=======
 // import React, { Component } from 'react';
 // import './App.css';
 // import { connect } from 'react-redux';

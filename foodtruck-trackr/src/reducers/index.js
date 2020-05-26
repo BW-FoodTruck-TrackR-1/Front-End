@@ -1,4 +1,4 @@
-import {
+/*import {
   FETCHING_TRUCKS,
   FETCHING_TRUCKS_SUCCESS,
   FETCHING_TRUCKS_FAIL,
@@ -179,3 +179,4 @@ export const DinerReducer = (state = initialStateDiner, action) => {
       return state;
   }
 };
+*/
