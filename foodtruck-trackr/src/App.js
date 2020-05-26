@@ -1,7 +1,24 @@
 import React,{useState} from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import Register from './components/Register.js'
+import styled from 'styled-components'
+import PrivateRoute from './components/PrivateRoute'
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        background-color: #c23B21;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 15px;
+        margin-right: 40px;
+    }`
+
 function App() {
 const[state, setState] = useState([])
 const use =(object) =>{
@@ -11,14 +28,13 @@ const use =(object) =>{
 
   return (
     <div className="App">
-    
+   
      <Register use={use} />
     </div>
   );
 }
 
 export default App;
-=======
 // import React, { Component } from 'react';
 // import './App.css';
 // import { connect } from 'react-redux';
@@ -133,3 +149,4 @@ export default App;
 //   addSmurf,
 //   delSmurf
 // })(App);
+
