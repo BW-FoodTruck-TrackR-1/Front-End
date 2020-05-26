@@ -59,7 +59,6 @@ const Label = styled.label`
   width: 100%;
   font-size: 1.2rem;
   color: #f7e976;
-  padding: 50px;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -72,32 +71,36 @@ function Login(props) {
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
-    diner: false,
-    operator: false,
   });
 
   const [diner, setDiner] = useState({
     username: "",
     password: "",
+    diner: false,
   });
 
   const [operator, setOperator] = useState({
     username: "",
     password: "",
+    operator: false,
   });
 
   const changeHandlerDiner = (e) => {
     e.preventDefault();
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setDiner({
       ...diner,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
   const changeHandlerOperator = (e) => {
     e.preventDefault();
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setOperator({
       ...operator,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
@@ -134,22 +137,24 @@ function Login(props) {
   return (
     <Route path="/login">
       <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
-        <Container>
-          <div>
-            <H1>
-              FoodTruck TrackR
-              <br />
-              Login
-            </H1>
-          </div>
-        </Container>
-        <Container>
-          <div>
-            <StyledLink to="/login/diner">Diner</StyledLink>
-            <StyledLink to="/login/operator">Operator</StyledLink>
-          </div>
-          <Button2>Sign Up</Button2>
-        </Container>
+        <Route exact path="/login">
+          <Container>
+            <div>
+              <H1>
+                FoodTruck TrackR
+                <br />
+                Login
+              </H1>
+            </div>
+          </Container>
+          <Container>
+            <div>
+              <StyledLink to="/login/diner">Diner</StyledLink>
+              <StyledLink to="/login/operator">Operator</StyledLink>
+            </div>
+            <Button2>Sign Up</Button2>
+          </Container>
+        </Route>
         <Route exact path="/login/diner">
           <Container>
             <H2>Diner</H2>
@@ -160,6 +165,7 @@ function Login(props) {
             </div>
             <div className="inputDiv">
               <Input
+                type="text"
                 name="username"
                 placeholder="Username"
                 value={diner.username}
@@ -178,6 +184,21 @@ function Login(props) {
                 placeholder="password"
                 value={diner.password}
                 onChange={changeHandlerDiner}
+              />
+            </div>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="diner">Diner?</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                type="checkbox"
+                name="diner"
+                placeholder="diner"
+                value={diner.diner}
+                onChange={changeHandlerDiner}
+                checked={false}
               />
             </div>
           </Container>
@@ -216,6 +237,21 @@ function Login(props) {
                 placeholder="password"
                 value={operator.password}
                 onChange={changeHandlerOperator}
+              />
+            </div>
+          </Container>
+          <Container>
+            <div className="labelDiv">
+              <Label htmlFor="operator">Operator?</Label>
+            </div>
+            <div className="inputDiv">
+              <Input
+                type="checkbox"
+                name="operator"
+                placeholder="operator"
+                //value={operator.operator}
+                onChange={changeHandlerOperator}
+                checked={operator.operator}
               />
             </div>
           </Container>
