@@ -73,23 +73,27 @@ function TruckForm() {
     customerRating: [],
     customerRatingAvg: [],
     imageOfTruck: [],
-    menu: {
+    menu: [
+      {
+        itemName: "",
+        itemDescription: "",
+        itemPhoto: [],
+        itemPrice: "",
+        customerRating: [],
+        customerRatingAvg: [],
+      },
+    ],
+  });
+  const [menu, setMenu] = useState([
+    {
       itemName: "",
       itemDescription: "",
-      itemPhoto: [],
+      itemPhotos: [],
       itemPrice: "",
       customerRating: [],
       customerRatingAvg: [],
     },
-  });
-  const [menu, setMenu] = useState({
-    itemName: "",
-    itemDescription: "",
-    itemPhotos: [],
-    itemPrice: "",
-    customerRating: [],
-    customerRatingAvg: [],
-  });
+  ]);
   console.log(truckState.menu);
 
   const changeHandler = (e) => {
