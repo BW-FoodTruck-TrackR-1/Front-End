@@ -1,3 +1,4 @@
+
 import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -11,28 +12,59 @@ const use =(object) =>{
   setState([...state, object])
 }
 
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import "./App.css";
+import Register from "./components/Register.js";
+import styled from "styled-components";
+import PrivateRoute from "./components/PrivateRoute";
+import Login from "./components/Login";
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    background-color: #c23b21;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 40px;
+  }
+`;
+  
+function App() {
+  const [state, setState] = useState([]);
+  const use = (object) => {
+    setState([...state, object]);
+  };
 
   return (
     <div className="App">
-    
-     <Register use={use} />
+      <Register use={use} />
+      <Login />
     </div>
   );
 }
 
 export default App;
-//=======
+
 // import React, { Component } from 'react';
 // import './App.css';
 // import { connect } from 'react-redux';
 // import { getTrucks, addTruck, deleteTruck } from '../actions/index'
 
-
 // class App extends Component {
 //   constructor(){
 //     super();
 //     this.state = {
-   
+
 //       // // imageOfTruck:'',
 //       // cuisineType: '',
 //       // customerRatings: '',

@@ -5,12 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 //we can call the reducer whatever but I haven't built it yet
-import { Reducer } from './reducers/index.js';
+import reducer from './reducers/index.js';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from "react-router-dom";
 import thunk from 'redux-thunk'
 
-const store = createStore(Reducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
     <React.StrictMode>
