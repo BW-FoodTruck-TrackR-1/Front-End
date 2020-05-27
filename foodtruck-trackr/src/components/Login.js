@@ -15,7 +15,7 @@ const H2 = styled.h2`
 `;
 const Form = styled.form`
   margin: auto;
-  margin-top: 50px;
+  margin-top: 125px;
   padding: 50px;
   width: 500px;
   height: 600px;
@@ -42,15 +42,6 @@ const Button = styled.button`
   background-color: #fecb00;
   border-radius: 5px;
 `;
-const Button2 = styled.button`
-  height: 40px;
-  width: 60px;
-  background-color: #fecb00;
-  border-radius: 5px;
-  position: relative;
-  left: 220px;
-  bottom: 100px;
-`;
 const Input = styled.input`
   height: 20px;
   width: 200px;
@@ -59,7 +50,6 @@ const Label = styled.label`
   width: 100%;
   font-size: 1.2rem;
   color: #f7e976;
-  padding: 50px;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -67,38 +57,65 @@ const StyledLink = styled(Link)`
   color: #c4c4c4;
   margin: 10px;
 `;
+const StyledLink2 = styled(Link)`
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #c23b21;
+  height: 40px;
+  width: 60px;
+  background-color: #fecb00;
+  border-radius: 5px;
+  position: relative;
+  left: 220px;
+  bottom: 100px;
+`;
 
 function Login(props) {
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
-    diner: false,
-    operator: false,
   });
 
   const [diner, setDiner] = useState({
     username: "",
     password: "",
+    diner: false,
   });
 
   const [operator, setOperator] = useState({
     username: "",
     password: "",
+    operator: false,
   });
 
   const changeHandlerDiner = (e) => {
     e.preventDefault();
-    setDiner({
-      ...diner,
-      [e.target.name]: e.target.value,
-    });
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setDiner(
+      {
+        ...diner,
+        [e.target.name]: value,
+      },
+      console.log("diner value:", diner)
+    );
   };
   const changeHandlerOperator = (e) => {
     e.preventDefault();
-    setOperator({
-      ...operator,
-      [e.target.name]: e.target.value,
-    });
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setOperator(
+      {
+        ...operator,
+        [e.target.name]: value,
+      },
+      console.log("operator value:", operator)
+    );
   };
 
   const formSubmit = (e) => {
@@ -132,8 +149,8 @@ function Login(props) {
   };
 
   return (
-    <Route path="/login">
-      <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+      <Route exact path="/login">
         <Container>
           <div>
             <H1>
@@ -148,86 +165,117 @@ function Login(props) {
             <StyledLink to="/login/diner">Diner</StyledLink>
             <StyledLink to="/login/operator">Operator</StyledLink>
           </div>
-          <Button2>Sign Up</Button2>
+          <StyledLink2 to="/register">Sign Up</StyledLink2>
         </Container>
-        <Route exact path="/login/diner">
-          <Container>
-            <H2>Diner</H2>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="username">Username</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                name="username"
-                placeholder="Username"
-                value={diner.username}
-                onChange={changeHandlerDiner}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="password">Password</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={diner.password}
-                onChange={changeHandlerDiner}
-              />
-            </div>
-          </Container>
-          <Container>
-            <Button>Login</Button>
-          </Container>
-          <Container>
-            <StyledLink to="/login">Login Home</StyledLink>
-          </Container>
-        </Route>
-        <Route exact path="/login/operator">
-          <Container>
-            <H2>Operator</H2>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="username">Username</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                name="username"
-                placeholder="Username"
-                value={operator.username}
-                onChange={changeHandlerOperator}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="password">Password</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={operator.password}
-                onChange={changeHandlerOperator}
-              />
-            </div>
-          </Container>
-          <Container>
-            <Button>Login</Button>
-          </Container>
-          <Container>
-            <StyledLink to="/login">Login Home</StyledLink>
-          </Container>
-        </Route>
-      </Form>
-    </Route>
+      </Route>
+      <Route exact path="/login/diner">
+        <Container>
+          <H2>Diner</H2>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="username">Username</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={diner.username}
+              onChange={changeHandlerDiner}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="password">Password</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={diner.password}
+              onChange={changeHandlerDiner}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="diner">Diner?</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="checkbox"
+              name="diner"
+              placeholder="diner"
+              value={diner.diner}
+              onChange={changeHandlerDiner}
+              checked={diner.diner}
+            />
+          </div>
+        </Container>
+        <Container>
+          <Button>Login</Button>
+        </Container>
+        <Container>
+          <StyledLink to="/login">Login Home</StyledLink>
+        </Container>
+      </Route>
+      <Route exact path="/login/operator">
+        <Container>
+          <H2>Operator</H2>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="username">Username</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              name="username"
+              placeholder="Username"
+              value={operator.username}
+              onChange={changeHandlerOperator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="password">Password</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={operator.password}
+              onChange={changeHandlerOperator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="operator">Operator?</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="checkbox"
+              name="operator"
+              placeholder="operator"
+              //value={operator.operator}
+              onChange={changeHandlerOperator}
+              checked={operator.operator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <Button>Login</Button>
+        </Container>
+        <Container>
+          <StyledLink to="/login">Login Home</StyledLink>
+        </Container>
+      </Route>
+    </Form>
   );
 }
 

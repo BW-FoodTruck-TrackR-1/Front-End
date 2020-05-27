@@ -1,17 +1,3 @@
-
-import React,{useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Register from './components/Register.js'
-
-
-
-function App() {
-const[state, setState] = useState([])
-const use =(object) =>{
-  setState([...state, object])
-}
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
@@ -19,6 +5,7 @@ import Register from "./components/Register.js";
 import styled from "styled-components";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
+import TruckForm from "./components/TruckForm";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -38,7 +25,7 @@ const StyledLink = styled(Link)`
     margin-right: 40px;
   }
 `;
-  
+
 function App() {
   const [state, setState] = useState([]);
   const use = (object) => {
@@ -47,8 +34,15 @@ function App() {
 
   return (
     <div className="App">
-      <Register use={use} />
-      <Login />
+      <Route path="/register">
+        <Register use={use} />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/truckform">
+        <TruckForm />
+      </Route>
     </div>
   );
 }
