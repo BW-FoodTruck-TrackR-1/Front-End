@@ -108,6 +108,10 @@ function TruckForm() {
       ...menu,
       [e.target.name]: e.target.value,
     });
+    setTruckState({
+      ...menu,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleImage = (e) => {
