@@ -33,7 +33,9 @@ function App() {
 
   return (
     <div className="App">
-      <Register use={use} />
+      <Route path="/register">
+        <Register use={use} />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>

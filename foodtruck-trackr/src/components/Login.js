@@ -15,7 +15,7 @@ const H2 = styled.h2`
 `;
 const Form = styled.form`
   margin: auto;
-  margin-top: 50px;
+  margin-top: 125px;
   padding: 50px;
   width: 500px;
   height: 600px;
@@ -42,15 +42,6 @@ const Button = styled.button`
   background-color: #fecb00;
   border-radius: 5px;
 `;
-const StyledLink2 = styled(Link)`
-  height: 40px;
-  width: 60px;
-  background-color: #fecb00;
-  border-radius: 5px;
-  position: relative;
-  left: 220px;
-  bottom: 100px;
-`;
 const Input = styled.input`
   height: 20px;
   width: 200px;
@@ -65,6 +56,23 @@ const StyledLink = styled(Link)`
   font-size: 1.4rem;
   color: #c4c4c4;
   margin: 10px;
+`;
+const StyledLink2 = styled(Link)`
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #c23b21;
+  height: 40px;
+  width: 60px;
+  background-color: #fecb00;
+  border-radius: 5px;
+  position: relative;
+  left: 220px;
+  bottom: 100px;
 `;
 
 function Login(props) {
@@ -89,19 +97,25 @@ function Login(props) {
     e.preventDefault();
     let value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setDiner({
-      ...diner,
-      [e.target.name]: value,
-    });
+    setDiner(
+      {
+        ...diner,
+        [e.target.name]: value,
+      },
+      console.log("diner value:", diner)
+    );
   };
   const changeHandlerOperator = (e) => {
     e.preventDefault();
     let value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setOperator({
-      ...operator,
-      [e.target.name]: value,
-    });
+    setOperator(
+      {
+        ...operator,
+        [e.target.name]: value,
+      },
+      console.log("operator value:", operator)
+    );
   };
 
   const formSubmit = (e) => {
@@ -197,7 +211,7 @@ function Login(props) {
               placeholder="diner"
               value={diner.diner}
               onChange={changeHandlerDiner}
-              checked={false}
+              checked={diner.diner}
             />
           </div>
         </Container>
