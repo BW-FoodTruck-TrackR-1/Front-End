@@ -6,9 +6,9 @@ import Truck from './Truck'
 
 const TruckCard = (props) => {
 
-    useEffect(() => {
-        props.getTrucks()
-    }, [])
+    // useEffect(() => {
+    //     props.getTrucks()
+    // }, [])
 
   return (
     <div>

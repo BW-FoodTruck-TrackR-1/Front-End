@@ -1,3 +1,17 @@
+
+import React,{useState} from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Register from './components/Register.js'
+
+
+
+function App() {
+const[state, setState] = useState([])
+const use =(object) =>{
+  setState([...state, object])
+}
+
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
@@ -24,7 +38,7 @@ const StyledLink = styled(Link)`
     margin-right: 40px;
   }
 `;
-
+  
 function App() {
   const [state, setState] = useState([]);
   const use = (object) => {
@@ -44,6 +58,7 @@ function App() {
 }
 
 export default App;
+
 // import React, { Component } from 'react';
 // import './App.css';
 // import { connect } from 'react-redux';
