@@ -1,5 +1,5 @@
 import React from "react";
-import Truck from './Truck'
+
 
 
 const Truck = (props) => {

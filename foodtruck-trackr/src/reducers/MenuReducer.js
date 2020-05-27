@@ -17,6 +17,7 @@ import {
     trucksOwned: [],
     allOtherTrucks: [],
     favoriteTrucks: [],
+    menu:[],
     fetched: false,
     error: null,
   };
@@ -39,7 +40,8 @@ import {
           isfetchingMenu: false,
           trucksOwned: action.payload,
           allOtherTrucks: action.payload,
-          favoriteTrucks:action.payload
+          favoriteTrucks:action.payload,
+          menu:action.payload
         };
       case FETCHING_MENU_ITEMS_FAIL:
         return {
@@ -55,6 +57,7 @@ import {
           fetched: false,
           trucksOwned: action.payload,
           allOtherTrucks: action.payload,
+          menu:action.payload
         };
       case ADD_MENU_ITEM_SUCCESS:
         return {
@@ -63,6 +66,7 @@ import {
           fetched: true,
           trucksOwned: action.payload,
           allOtherTrucks: action.payload,
+          menu:action.payload
         };
       case ADD_MENU_ITEM_FAIL:
         return {
@@ -83,6 +87,7 @@ import {
           fetched: true,
           trucksOwned: action.payload,
           allOtherTrucks: action.payload,
+          menu:action.payload
         };
         case DELETE_MENU_ITEM_FAIL:
           return {
