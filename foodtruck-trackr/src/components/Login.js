@@ -42,7 +42,7 @@ const Button = styled.button`
   background-color: #fecb00;
   border-radius: 5px;
 `;
-const Button2 = styled.button`
+const StyledLink2 = styled(Link)`
   height: 40px;
   width: 60px;
   background-color: #fecb00;
@@ -135,135 +135,133 @@ function Login(props) {
   };
 
   return (
-    <Route path="/login">
-      <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
-        <Route exact path="/login">
-          <Container>
-            <div>
-              <H1>
-                FoodTruck TrackR
-                <br />
-                Login
-              </H1>
-            </div>
-          </Container>
-          <Container>
-            <div>
-              <StyledLink to="/login/diner">Diner</StyledLink>
-              <StyledLink to="/login/operator">Operator</StyledLink>
-            </div>
-            <Button2>Sign Up</Button2>
-          </Container>
-        </Route>
-        <Route exact path="/login/diner">
-          <Container>
-            <H2>Diner</H2>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="username">Username</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={diner.username}
-                onChange={changeHandlerDiner}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="password">Password</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={diner.password}
-                onChange={changeHandlerDiner}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="diner">Diner?</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="checkbox"
-                name="diner"
-                placeholder="diner"
-                value={diner.diner}
-                onChange={changeHandlerDiner}
-                checked={false}
-              />
-            </div>
-          </Container>
-          <Container>
-            <Button>Login</Button>
-          </Container>
-          <Container>
-            <StyledLink to="/login">Login Home</StyledLink>
-          </Container>
-        </Route>
-        <Route exact path="/login/operator">
-          <Container>
-            <H2>Operator</H2>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="username">Username</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                name="username"
-                placeholder="Username"
-                value={operator.username}
-                onChange={changeHandlerOperator}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="password">Password</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={operator.password}
-                onChange={changeHandlerOperator}
-              />
-            </div>
-          </Container>
-          <Container>
-            <div className="labelDiv">
-              <Label htmlFor="operator">Operator?</Label>
-            </div>
-            <div className="inputDiv">
-              <Input
-                type="checkbox"
-                name="operator"
-                placeholder="operator"
-                //value={operator.operator}
-                onChange={changeHandlerOperator}
-                checked={operator.operator}
-              />
-            </div>
-          </Container>
-          <Container>
-            <Button>Login</Button>
-          </Container>
-          <Container>
-            <StyledLink to="/login">Login Home</StyledLink>
-          </Container>
-        </Route>
-      </Form>
-    </Route>
+    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+      <Route exact path="/login">
+        <Container>
+          <div>
+            <H1>
+              FoodTruck TrackR
+              <br />
+              Login
+            </H1>
+          </div>
+        </Container>
+        <Container>
+          <div>
+            <StyledLink to="/login/diner">Diner</StyledLink>
+            <StyledLink to="/login/operator">Operator</StyledLink>
+          </div>
+          <StyledLink2 to="/register">Sign Up</StyledLink2>
+        </Container>
+      </Route>
+      <Route exact path="/login/diner">
+        <Container>
+          <H2>Diner</H2>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="username">Username</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={diner.username}
+              onChange={changeHandlerDiner}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="password">Password</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={diner.password}
+              onChange={changeHandlerDiner}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="diner">Diner?</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="checkbox"
+              name="diner"
+              placeholder="diner"
+              value={diner.diner}
+              onChange={changeHandlerDiner}
+              checked={false}
+            />
+          </div>
+        </Container>
+        <Container>
+          <Button>Login</Button>
+        </Container>
+        <Container>
+          <StyledLink to="/login">Login Home</StyledLink>
+        </Container>
+      </Route>
+      <Route exact path="/login/operator">
+        <Container>
+          <H2>Operator</H2>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="username">Username</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              name="username"
+              placeholder="Username"
+              value={operator.username}
+              onChange={changeHandlerOperator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="password">Password</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={operator.password}
+              onChange={changeHandlerOperator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <div className="labelDiv">
+            <Label htmlFor="operator">Operator?</Label>
+          </div>
+          <div className="inputDiv">
+            <Input
+              type="checkbox"
+              name="operator"
+              placeholder="operator"
+              //value={operator.operator}
+              onChange={changeHandlerOperator}
+              checked={operator.operator}
+            />
+          </div>
+        </Container>
+        <Container>
+          <Button>Login</Button>
+        </Container>
+        <Container>
+          <StyledLink to="/login">Login Home</StyledLink>
+        </Container>
+      </Route>
+    </Form>
   );
 }
 
