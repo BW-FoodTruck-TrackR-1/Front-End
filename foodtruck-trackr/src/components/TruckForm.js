@@ -135,97 +135,95 @@ function TruckForm() {
           </H1>
         </SubDiv>
       </Container>
-      <Route exact path="/truck">
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="cuisineType">Cuisine Type</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="cuisineType"
-              placeholder="Cuisine type"
-              value={truckState.cuisineType}
-              onChange={changeHandler}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="imageOfTruck">Upload Image(s) of Truck</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="file"
-              value={truckState.imageOfTruck}
-              onChange={handleImage}
-              multiple
-            />
-          </div>
-        </Container>
-        <Container>
-          <H2>Menu Items</H2>
-        </Container>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="cuisineType">Cuisine Type</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            name="cuisineType"
+            placeholder="Cuisine type"
+            value={truckState.cuisineType}
+            onChange={changeHandler}
+          />
+        </div>
+      </Container>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="imageOfTruck">Upload Image(s) of Truck</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            type="file"
+            value={truckState.imageOfTruck}
+            onChange={handleImage}
+            multiple
+          />
+        </div>
+      </Container>
+      <Container>
+        <H2>Menu Items</H2>
+      </Container>
 
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="itemDescription">Item Description</Label>
-          </div>
-          <div className="inputDiv">
-            <textarea
-              name="itemDescription"
-              placeholder="Item description"
-              rows="5"
-              cols="35"
-              value={menu.itemDescription}
-              onChange={changeHandlerMenu}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="itemName">Item Name</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="itemName"
-              placeholder="Item Name"
-              value={menu.itemName}
-              onChange={changeHandlerMenu}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="itemPrice">Item Price</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="itemPrice"
-              placeholder="Item Price"
-              value={menu.itemPrice}
-              onChange={changeHandlerMenu}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="itemPhoto">Item Photo</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="file"
-              name="itemPhoto"
-              placeholder="Item Photo"
-              value={menu.itemPhoto}
-              onChange={changeHandlerMenu}
-              multiple
-            />
-          </div>
-        </Container>
-        <Container>
-          <Button>Create new Truck</Button>
-        </Container>
-      </Route>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="itemDescription">Item Description</Label>
+        </div>
+        <div className="inputDiv">
+          <textarea
+            name="itemDescription"
+            placeholder="Item description"
+            rows="5"
+            cols="35"
+            value={menu.itemDescription}
+            onChange={changeHandlerMenu}
+          />
+        </div>
+      </Container>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="itemName">Item Name</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            name="itemName"
+            placeholder="Item Name"
+            value={menu.itemName}
+            onChange={changeHandlerMenu}
+          />
+        </div>
+      </Container>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="itemPrice">Item Price</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            name="itemPrice"
+            placeholder="Item Price"
+            value={menu.itemPrice}
+            onChange={changeHandlerMenu}
+          />
+        </div>
+      </Container>
+      <Container>
+        <div className="labelDiv">
+          <Label htmlFor="itemPhoto">Item Photo</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            type="file"
+            name="itemPhoto"
+            placeholder="Item Photo"
+            value={menu.itemPhoto}
+            onChange={changeHandlerMenu}
+            multiple
+          />
+        </div>
+      </Container>
+      <Container>
+        <Button>Create new Truck</Button>
+      </Container>
     </Form>
   );
 }
