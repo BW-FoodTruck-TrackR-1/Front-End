@@ -120,7 +120,7 @@ function Login(props) {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted!");
+    console.log("Form Submitted!");
 
     //const loginStateValue =  ;
     axios
