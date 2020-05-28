@@ -40,7 +40,7 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route exact path="/truckform">
+      <Route exact path="/truck">
         <TruckForm />
       </Route>
     </div>
