@@ -11,9 +11,10 @@ export default function DinerDashboard(){
 
 return (
     <div>
-        <SearchTrucks />
+        {/* <SearchTrucks />
         <TruckCard />
-        <FavTrucks />
+        <FavTrucks /> */}
+        hi. this is the dashboard for diners
     </div>
 
 )

@@ -6,6 +6,9 @@ import styled from "styled-components";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import TruckForm from "./components/TruckForm";
+import Operator from './components/Operator'
+import Diner from './components/Diner'
+import OperatorDashboard from './components/OperatorDashboard'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -26,6 +29,15 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Container = styled.div`
+  height: 100px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 function App() {
   const [state, setState] = useState([]);
   const use = (object) => {
@@ -34,6 +46,20 @@ function App() {
 
   return (
     <div className="App">
+          <StyledLink to="/dinerreg"> Diner registration</StyledLink>
+    
+    <StyledLink to="/operatorreg">Operator registration</StyledLink>
+    <StyledLink to="/login">Login</StyledLink>
+    <Route path="/dinerreg">
+        <Diner 
+            // formSubmit={dinerSubmit} 
+            />
+    </Route>
+   <Route exact path="/operatorreg">
+        <Operator 
+            // formSubmit={operatorSubmit} 
+             />
+    </Route>
       <Route path="/register">
         <Register use={use} />
       </Route>
@@ -42,6 +68,9 @@ function App() {
       </Route>
       <Route exact path="/truckform">
         <TruckForm />
+      </Route>
+      <Route path="/operator-dashboard">
+        <OperatorDashboard />
       </Route>
     </div>
   );

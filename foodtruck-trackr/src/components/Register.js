@@ -54,12 +54,12 @@ const operatorSubmit = e =>{
     <StyledLink to="/operatorreg">Operator registration</StyledLink>
     <Route path="/dinerreg">
         <Diner 
-            formSubmit={dinerSubmit} 
+            // formSubmit={dinerSubmit} 
             />
     </Route>
-   <Route path="/operatorreg">
+   <Route exact path="/operatorreg">
         <Operator 
-            formSubmit={operatorSubmit} 
+            // formSubmit={operatorSubmit} 
              />
     </Route>
         </div>
