@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Truck from '../Truck';
-
-
-
-
+import TruckCard from '../TruckCard';
 import * as TruckActions from '../actions/TruckActions'
 
 
@@ -21,7 +17,7 @@ const FavoriteTrucks = ({trucks, getTrucks}) => {
         <div>
             <div>
                 {trucks.map(item => (
-                    <Truck truck={item} buttonText='Remove' />
+                    <TruckCard truck={item} buttonText='Remove' />
                 ))}
 
             </div>
