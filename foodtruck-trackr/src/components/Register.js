@@ -27,21 +27,26 @@ export default function Register(props) {
   const [dinerState, setDinerState] = useState();
   const [operatorState, setOperatorState] = useState();
 
-  const dinerSubmit = (e) => {
-    e.preventDefault();
+  const dinerSubmit = (formstate) => {
     console.log("form submitted");
     axios
-      .post("https://reqres.in/api/users", dinerState)
-      .then((response) => props.use(response.data))
+      .post("https://reqres.in/api/users", formstate)
+      .then((response) => {
+        setDinerState(response.data);
+        console.log(response, "response");
+      })
+
       .catch((err) => console.log(err));
   };
 
-  const operatorSubmit = (e) => {
-    e.preventDefault();
+  const operatorSubmit = (forms) => {
     console.log("form submitted");
     axios
-      .post("https://reqres.in/api/users", operatorState)
-      .then((response) => props.use(response.data))
+      .post("https://reqres.in/api/users", forms)
+      .then((response) => {
+        setOperatorState(response.data);
+        console.log(response, "response");
+      })
       .catch((err) => console.log(err));
   };
 

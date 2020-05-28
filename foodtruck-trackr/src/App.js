@@ -10,6 +10,7 @@ import Operator from "./components/Operator";
 import Diner from "./components/Diner";
 import OperatorDashboard from "./components/OperatorDashboard";
 import DinerDashboard from "./components/DinerDashboard";
+import TruckCard from "./components/TruckCard";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -40,11 +41,6 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [state, setState] = useState([]);
-  const use = (object) => {
-    setState([...state, object]);
-  };
-
   return (
     <div className="App">
       <StyledLink to="/dinerreg"> Diner registration</StyledLink>
@@ -61,7 +57,7 @@ function App() {
         />
       </Route>
       <Route path="/register">
-        <Register use={use} />
+        <Register />
       </Route>
       <Route path="/login">
         <Login />
@@ -75,6 +71,7 @@ function App() {
       <Route path="/diner-dashboard">
         <DinerDashboard />
       </Route>
+      <TruckCard />
     </div>
   );
 }
