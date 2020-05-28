@@ -20,9 +20,13 @@ export const DELETING_FAVED_TRUCK = 'DELETING_FAVED_TRUCK'
 export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
 
-export const getTrucks = () => {
+export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
+<<<<<<< HEAD
     .get(`https://food-truck-back-end.herokuapp.com/operators/trucks/`)
+=======
+    .get('https://food-truck-back-end.herokuapp.com/operators/',getthattruck)
+>>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
 
     return (dispatch) => {
         dispatch({
@@ -48,7 +52,11 @@ export const getTrucks = () => {
 
 export const addTruck = (truck) => {
     const request =  axiosWithAuth()
+<<<<<<< HEAD
     .post(`https://food-truck-back-end.herokuapp.com/operators/trucks/`, truck)
+=======
+    .post('https://food-truck-back-end.herokuapp.com/operators/', truck)
+>>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
   
     return (dispatch) => {
       dispatch({
@@ -70,7 +78,11 @@ export const addTruck = (truck) => {
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
+<<<<<<< HEAD
     .delete(`https://food-truck-back-end.herokuapp.com/operators/trucks/${id}`)
+=======
+    .delete(`https://food-truck-back-end.herokuapp.com/operators/${id}`)
+>>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
   
     return (dispatch) => {
       dispatch({

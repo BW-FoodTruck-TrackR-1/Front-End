@@ -1,27 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
+// import React from 'react';
+// import { connect } from 'react-redux';
 
-function FavTrucks({ truck }) {
+// function FavTrucks({ truck }) {
 
       
       
-    return (
-        <div className='favorite-trucks'>
-            <h3>
-                Favorite Trucks:
-            </h3>
-            <p>
-                {truck.filter(f => {
-                   return (
-                    <p>{f.faved === true}</p>
-                   )
+//     return (
+//         <div className='favorite-trucks'>
+//             <h3>
+//                 Favorite Trucks:
+//             </h3>
+//             <p>
+//                 {truck.filter(f => {
+//                    return (
+//                     <p>{f.faved === true}</p>
+//                    )
 
-                    })}
-                    </p>
-        </div>
-    )
-}
-export default connect()(FavTrucks)
+//                     })}
+//                     </p>
+//         </div>
+//     )
+// }
+// export default connect()(FavTrucks)
 
 
 
