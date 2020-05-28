@@ -20,9 +20,9 @@ export const DELETING_FAVED_TRUCK = 'DELETING_FAVED_TRUCK'
 export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
 
-export const getTrucks = () => {
+export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
-    .get('api ')
+    .get('https://food-truck-back-end.herokuapp.com/operators/',getthattruck)
 
     return (dispatch) => {
         dispatch({
@@ -48,7 +48,7 @@ export const getTrucks = () => {
 
 export const addTruck = (truck) => {
     const request =  axiosWithAuth()
-    .post('api', truck)
+    .post('https://food-truck-back-end.herokuapp.com/operators/', truck)
   
     return (dispatch) => {
       dispatch({
@@ -70,7 +70,7 @@ export const addTruck = (truck) => {
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
-    .delete(`api/${id}`)
+    .delete(`https://food-truck-back-end.herokuapp.com/operators/${id}`)
   
     return (dispatch) => {
       dispatch({
