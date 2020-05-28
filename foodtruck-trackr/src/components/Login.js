@@ -2,18 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
+import LoginDiner from "./LoginDiner";
+import LoginOperator from "./LoginOperator";
 
-const H1 = styled.h1`
-  font-size: 2rem;
-  width: 500px;
-  color: #ffc23b;
-`;
-const H2 = styled.h2`
-  font-size: 1.8rem;
-  width: 500px;
-  color: #ffc23b;
-`;
-const Form = styled.form`
+const Div = styled.div`
   margin: auto;
   margin-top: 125px;
   padding: 50px;
@@ -28,6 +20,11 @@ const Form = styled.form`
   top: 50;
   left: 50;
 `;
+const H1 = styled.h1`
+  font-size: 2rem;
+  width: 500px;
+  color: #ffc23b;
+`;
 const Container = styled.div`
   height: 100px;
   width: 300px;
@@ -35,21 +32,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-const Button = styled.button`
-  height: 60px;
-  width: 150px;
-  background-color: #fecb00;
-  border-radius: 5px;
-`;
-const Input = styled.input`
-  height: 20px;
-  width: 200px;
-`;
-const Label = styled.label`
-  width: 100%;
-  font-size: 1.2rem;
-  color: #f7e976;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -79,44 +61,9 @@ function Login(props) {
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
-  });
-
-  const [diner, setDiner] = useState({
-    username: "",
-    password: "",
     diner: false,
-  });
-
-  const [operator, setOperator] = useState({
-    username: "",
-    password: "",
     operator: false,
   });
-
-  const changeHandlerDiner = (e) => {
-    e.preventDefault();
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setDiner(
-      {
-        ...diner,
-        [e.target.name]: value,
-      },
-      console.log("diner value:", diner)
-    );
-  };
-  const changeHandlerOperator = (e) => {
-    e.preventDefault();
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setOperator(
-      {
-        ...operator,
-        [e.target.name]: value,
-      },
-      console.log("operator value:", operator)
-    );
-  };
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -126,20 +73,13 @@ function Login(props) {
     axios
       .post("https://reqres.in/api/users", loginState)
       .then((res) => {
-        console.log(res.data);
+        const resData = res.data;
+        console.log(resData);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    setDiner({
-      username: "",
-      password: "",
-    });
-    setOperator({
-      username: "",
-      password: "",
-    });
     setLoginState({
       username: "",
       password: "",
@@ -149,7 +89,7 @@ function Login(props) {
   };
 
   return (
-    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+    <Div>
       <Route exact path="/login">
         <Container>
           <div>
@@ -169,113 +109,12 @@ function Login(props) {
         </Container>
       </Route>
       <Route exact path="/login/diner">
-        <Container>
-          <H2>Diner</H2>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="username">Username</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={diner.username}
-              onChange={changeHandlerDiner}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="password">Password</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={diner.password}
-              onChange={changeHandlerDiner}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="diner">Diner?</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="checkbox"
-              name="diner"
-              placeholder="diner"
-              value={diner.diner}
-              onChange={changeHandlerDiner}
-              checked={diner.diner}
-            />
-          </div>
-        </Container>
-        <Container>
-          <Button>Login</Button>
-        </Container>
-        <Container>
-          <StyledLink to="/login">Login Home</StyledLink>
-        </Container>
+        <LoginDiner />
       </Route>
       <Route exact path="/login/operator">
-        <Container>
-          <H2>Operator</H2>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="username">Username</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              name="username"
-              placeholder="Username"
-              value={operator.username}
-              onChange={changeHandlerOperator}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="password">Password</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={operator.password}
-              onChange={changeHandlerOperator}
-            />
-          </div>
-        </Container>
-        <Container>
-          <div className="labelDiv">
-            <Label htmlFor="operator">Operator?</Label>
-          </div>
-          <div className="inputDiv">
-            <Input
-              type="checkbox"
-              name="operator"
-              placeholder="operator"
-              //value={operator.operator}
-              onChange={changeHandlerOperator}
-              checked={operator.operator}
-            />
-          </div>
-        </Container>
-        <Container>
-          <Button>Login</Button>
-        </Container>
-        <Container>
-          <StyledLink to="/login">Login Home</StyledLink>
-        </Container>
+        <LoginOperator />
       </Route>
-    </Form>
+    </Div>
   );
 }
 

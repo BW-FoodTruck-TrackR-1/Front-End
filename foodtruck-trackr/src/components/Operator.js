@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import {axiosWithAuth} from '../utils/AxiosWithAuth'
 import * as yup from 'yup';
-
+import { useHistory } from 'react-router-dom'
 
 const formSchema = yup.object().shape({
+    location: yup.string().required("Please enter your location"), 
     name: yup.string().required("Please enter your full name"), 
     username: yup.string().required("Please enter a unique username"),
     password: yup.string().required("Please enter password"),
@@ -14,13 +15,16 @@ const formSchema = yup.object().shape({
 
 
 export default function Operator(props){
+    const history =  useHistory()
 const [formState, setFormState]=useState({
-    name:"",
+    // name:"",
     username:"",
     password:"",
-    email:"",
-    trucksOwned:[],
-    terms:false
+    // email:"",
+    // trucksOwned:[],
+    // terms:false,
+    // location:'',
+    // id:Date.now()
 
 })
 const [error, seterror] = useState({
@@ -59,10 +63,53 @@ const inputChange = e =>{
     let value=e.target.type === "checkbox" ? e.target.checked : e.target.value
     setFormState({...formState, [e.target.name]:value});
 }
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+    //axiosWithAuth call
+    axiosWithAuth()
+    //posting our register data to the register api
+      .post(`https://food-truck-back-end.herokuapp.com/operators/`, formState)
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setFormState({
+            // name:"",
+            username:"",
+            password:"",
+            // email:"",
+            // terms: false,
+            // location:''
+        })
+        console.log(res.data)
+        //pushes us to the /operatorDashboard
+        history.push('/operator-dashboard')
+
+      })
+      .catch(err => console.log(err)) 
+
+
+  }
+
+//   const handleSubmitTest = (e) => {
+//     e.preventDefault()
+
+//     axiosWithAuth()
+
+//       .get(`https://food-truck-back-end.herokuapp.com/operators/1`)
+//       .then((res) => console.log(res))
+//       .catch(err => console.log(err)) 
+
+
+//   }
+
+  
+
     return (
-        <form onSubmit={props.formSubmit}> 
+        <form onSubmit={handleSubmit}> 
             <h2>Operator registration</h2>
-            <label htmlFor="name">Full Name </label>
+            {/* <label htmlFor="name">Full Name </label>
                 <div className="form-group">
                     <input 
                     type="text"
@@ -71,8 +118,8 @@ const inputChange = e =>{
                     onChange={inputChange}
                     />
                     {error.name.length > 0 ? <p className = "error">{error.name}</p> : null}
-                </div>
-            <label htmlFor="email">Enter your Email </label>
+                </div> */}
+            {/* <label htmlFor="email">Enter your Email </label>
 
                 <div className="form-group">
                     <input
@@ -82,7 +129,7 @@ const inputChange = e =>{
                     onChange={inputChange}
                     />
                     {error.email.length > 0 ? <p className = "error">{error.email}</p> : null}
-                </div>
+                </div> */}
             <label htmlFor="username">Please enter a username</label>  
                 <div className="form-group">
                     <input
@@ -105,10 +152,18 @@ const inputChange = e =>{
                     />
                     {error.password.length > 0 ? <p className = "error">{error.password}</p> : null}
                 </div>
-                <div className="form-group">
-          
 
-                <label htmlFor="terms">Terms & Conditions</label>
+                {/* <label htmlFor="location">Please enter a location </label>
+                <div className="form-group">
+                <input
+                    type="text"
+                    name="location"
+                    value={formState.location}
+                    onChange={inputChange}
+                    />
+                </div> */}
+
+                {/* <label htmlFor="terms">Terms & Conditions</label>
                     <input
                     type="checkbox"
                     id="terms"
@@ -117,9 +172,9 @@ const inputChange = e =>{
                     onChange={inputChange}
                     />
                     {error.terms.length > 0 ? <p className = "error">{error.terms}</p> : null}
-                    <br/>
+                    <br/> */}
                     <button type="submit">Submit</button>
-                </div>
+
                 
             
         </form>

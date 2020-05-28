@@ -183,7 +183,6 @@ function TruckForm() {
       <Container>
         <H2>Menu Items</H2>
       </Container>
-
       <Container>
         <div className="labelDiv">
           <Label htmlFor="itemDescription">Item Description</Label>
