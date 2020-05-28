@@ -57,14 +57,12 @@ function LoginOperator(props) {
   const [operator, setOperator] = useState({
     username: "",
     password: "",
-    operator: false,
   });
 
   const changeHandler = (e) => {
     e.preventDefault();
     let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let value = e.target.value;
     setOperator(
       {
         ...operator,
