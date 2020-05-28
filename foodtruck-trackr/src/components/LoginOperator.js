@@ -74,30 +74,8 @@ function LoginOperator(props) {
     );
   };
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted!");
-
-    //const loginStateValue =  ;
-    axios
-      .post("https://reqres.in/api/users", operator)
-      .then((res) => {
-        const resData = res.data;
-        console.log(resData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    setOperator({
-      username: "",
-      password: "",
-      operator: false,
-    });
-  };
-
   return (
-    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+    <Form autoComplete="off" onSubmit={(e) => props.formSubmit(e)}>
       <Container>
         <H2>Operator</H2>
       </Container>
@@ -125,21 +103,6 @@ function LoginOperator(props) {
             placeholder="Password"
             value={operator.password}
             onChange={changeHandler}
-          />
-        </div>
-      </Container>
-      <Container>
-        <div className="labelDiv">
-          <Label htmlFor="operator">Operator?</Label>
-        </div>
-        <div className="inputDiv">
-          <Input
-            type="checkbox"
-            name="operator"
-            placeholder="operator"
-            //value={operator.operator}
-            onChange={changeHandler}
-            checked={operator.operator}
           />
         </div>
       </Container>

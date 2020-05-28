@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {connect} from 'react-redux';
+import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
+
 
 const H1 = styled.h1`
   font-size: 2rem;
@@ -95,6 +99,13 @@ function TruckForm() {
     },
   ]);
   console.log(truckState.menu);
+
+
+  // ADDTRUCK 
+  
+
+  
+
 
   const changeHandler = (e) => {
     e.persist();
@@ -236,3 +247,5 @@ function TruckForm() {
 }
 
 export default TruckForm;
+
+

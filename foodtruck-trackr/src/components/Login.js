@@ -56,6 +56,7 @@ const StyledLink2 = styled(Link)`
   bottom: 100px;
 `;
 function Login(props) {
+<<<<<<< HEAD
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
@@ -82,6 +83,29 @@ function Login(props) {
   //     operator: false,
   //   });
   // };
+=======
+  const [dinerState, setDinerState] = useState();
+  const [operatorState, setOperatorState] = useState();
+
+  const dinerSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    axios
+      .post("https://reqres.in/api/users", dinerState)
+      .then((response) => props.use(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  const operatorSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    axios
+      .post("https://reqres.in/api/users", operatorState)
+      .then((response) => props.use(response.data))
+      .catch((err) => console.log(err));
+  };
+
+>>>>>>> 73b387dbf2e91a33b72b90bfe15f3e0203abf7fb
   return (
     <Div>
       <Route exact path="/login">
@@ -103,10 +127,10 @@ function Login(props) {
         </Container>
       </Route>
       <Route exact path="/login/diner">
-        <LoginDiner />
+        <LoginDiner formSubmit={dinerSubmit} />
       </Route>
       <Route exact path="/login/operator">
-        <LoginOperator />
+        <LoginOperator formSubmit={operatorSubmit} />
       </Route>
     </Div>
   );
