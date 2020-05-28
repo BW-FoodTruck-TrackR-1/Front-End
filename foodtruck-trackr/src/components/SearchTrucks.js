@@ -31,7 +31,7 @@ function SearchTrucks() {
   }, []);
 
   const onChange = (e) => setSearch(e.target.value);
-  useEffect(() => {
+  useEffect((c) => {
     setfilterData(
       truckData.filter(
         (c) => c.cuisine.toLowerCase().includes(search.toLowerCase()),
@@ -51,7 +51,7 @@ function SearchTrucks() {
           id="search"
           class="searchform"
           type="text"
-          onSubmit={onSubmit}
+          // onSubmit={onSubmit}
         ></input>
         <button type='submit'></button>
       </form>

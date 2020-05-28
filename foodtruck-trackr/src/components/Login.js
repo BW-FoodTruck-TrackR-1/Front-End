@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import LoginDiner from "./LoginDiner";
 import LoginOperator from "./LoginOperator";
-
 const Div = styled.div`
   margin: auto;
   margin-top: 125px;
@@ -56,7 +55,6 @@ const StyledLink2 = styled(Link)`
   left: 220px;
   bottom: 100px;
 `;
-
 function Login(props) {
   const [dinerState, setDinerState] = useState();
   const [operatorState, setOperatorState] = useState();
@@ -108,5 +106,4 @@ function Login(props) {
     </Div>
   );
 }
-
 export default Login;
