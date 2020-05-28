@@ -37,7 +37,7 @@ export const getMenuItems = () => {
 }
 
 
-export const addMenuItem = (menuitem) => {
+export const addMenuItem = (truck) => {
     const request =  axiosWithAuth()
     .post('api', truck)
   

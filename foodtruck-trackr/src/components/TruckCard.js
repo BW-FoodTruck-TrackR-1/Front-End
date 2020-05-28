@@ -31,3 +31,8 @@
 //   export default connect
 //   (mapStateToProps,{getTrucks})
 //   (TruckCard)
+
+
+
+
+
