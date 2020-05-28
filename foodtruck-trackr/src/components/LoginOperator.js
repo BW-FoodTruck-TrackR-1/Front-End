@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { axiosWithAuth } from '../utils/AxiosWithAuth'
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const H2 = styled.h2`
   font-size: 1.8rem;
@@ -54,17 +58,18 @@ const StyledLink = styled(Link)`
 `;
 
 function LoginOperator(props) {
+
+  const history = useHistory()
   const [operator, setOperator] = useState({
     username: "",
     password: "",
-    operator: false,
+    // operator: false,
   });
 
   const changeHandler = (e) => {
     e.preventDefault();
     let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let value = e.target.value;
     setOperator(
       {
         ...operator,
@@ -74,8 +79,58 @@ function LoginOperator(props) {
     );
   };
 
+  // const formSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form Submitted!");
+
+  //   //const loginStateValue =  ;
+  //   axios
+  //     .post("https://reqres.in/api/users", operator)
+  //     .then((res) => {
+  //       const resData = res.data;
+  //       console.log(resData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   setOperator({
+  //     username: "",
+  //     password: "",
+  //     operator: false,
+  //   });
+  // };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    //axiosWithAuth call
+    axiosWithAuth()
+    //posting our register data to the register api
+      .post(`https://food-truck-back-end.herokuapp.com/operators/login`, operator)
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setOperator({
+            // name:"",
+            username:"",
+            password:"",
+            // email:"",
+            // terms: false,
+            // location:''
+        })
+        console.log(res.data)
+        //pushes us to the /operatorDashboard
+        history.push('/operator-dashboard')
+
+      })
+      .catch(err => console.log(err)) 
+
+
+  }
+
+
   return (
-    <Form autoComplete="off" onSubmit={(e) => props.formSubmit(e)}>
+    <Form autoComplete="off" onSubmit={handleSubmit}>
       <Container>
         <H2>Operator</H2>
       </Container>
@@ -106,6 +161,21 @@ function LoginOperator(props) {
           />
         </div>
       </Container>
+      {/* <Container>
+        <div className="labelDiv">
+          <Label htmlFor="operator">Operator?</Label>
+        </div>
+        <div className="inputDiv">
+          <Input
+            type="checkbox"
+            name="operator"
+            placeholder="operator"
+            //value={operator.operator}
+            onChange={changeHandler}
+            checked={operator.operator}
+          />
+        </div>
+      </Container> */}
       <Container>
         <Button>Login</Button>
       </Container>

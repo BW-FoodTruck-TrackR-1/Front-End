@@ -9,6 +9,7 @@ import TruckForm from "./components/TruckForm";
 import Operator from './components/Operator'
 import Diner from './components/Diner'
 import OperatorDashboard from './components/OperatorDashboard'
+import DinerDashboard from './components/DinerDashboard'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -39,10 +40,7 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [state, setState] = useState([]);
-  const use = (object) => {
-    setState([...state, object]);
-  };
+  
 
   return (
     <div className="App">
@@ -61,7 +59,7 @@ function App() {
              />
     </Route>
       <Route path="/register">
-        <Register use={use} />
+        <Register />
       </Route>
       <Route path="/login">
         <Login />
@@ -71,6 +69,9 @@ function App() {
       </Route>
       <Route path="/operator-dashboard">
         <OperatorDashboard />
+      </Route>
+      <Route path="/diner-dashboard">
+        <DinerDashboard />
       </Route>
     </div>
   );
