@@ -40,10 +40,7 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [state, setState] = useState([]);
-  const use = (object) => {
-    setState([...state, object]);
-  };
+  
 
   return (
     <div className="App">
@@ -62,7 +59,7 @@ function App() {
              />
     </Route>
       <Route path="/register">
-        <Register use={use} />
+        <Register />
       </Route>
       <Route path="/login">
         <Login />
