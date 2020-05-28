@@ -1,33 +1,38 @@
-// import React from "react";
-// import { connect } from "react-redux";
-// import { getTrucks } from '../actions/TruckActions'
-// import Truck from './AddTruck'
+import React from "react";
+import { connect } from "react-redux";
+import * as TruckActions from '../actions/TruckActions'
+import Truck from './Truck'
+import { useEffect, useState } from "react";
 
 
-// const TruckCard = (props) => {
+const TruckCard = (props) => {
+  // const [truck, setTruck] = useState({})
+  const {getTrucks} = props
 
-//     // useEffect(() => {
-//     //     props.getTrucks()
-//     // }, [])
 
-//   return (
-//     <div>
-//       <div className='truck-card'>
-//           {props.truck.map((truck) => {
-//               return <Truck key={truck.id} truck={truck} />
-//           })}
+    // useEffect(() => {
+    //     setTruck(props.truck)
+    // }, [props.truck])
+    getTrucks()
 
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <div className='truck-card'>
+          {props.truck.map((truck) => {
+              return <Truck key={truck.id} truck={truck} />
+          })}
 
-// const mapStateToProps = (state) => {
-//     return {
-//         truck: state.truck
-//     }
-//   }
+      </div>
+    </div>
+  );
+};
 
-//   export default connect
-//   (mapStateToProps,{getTrucks})
-//   (TruckCard)
+const mapStateToProps = (state) => {
+    return {
+        truck: state.truck
+    }
+  }
+
+  export default connect
+  (mapStateToProps,TruckActions)
+  (TruckCard)

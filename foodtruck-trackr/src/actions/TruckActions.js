@@ -22,7 +22,7 @@ export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
 export const getTrucks = () => {
     const truckrequest =  axiosWithAuth()
-    .get('api ')
+    .get(`https://food-truck-back-end.herokuapp.com/operators/trucks/`)
 
     return (dispatch) => {
         dispatch({
@@ -48,7 +48,7 @@ export const getTrucks = () => {
 
 export const addTruck = (truck) => {
     const request =  axiosWithAuth()
-    .post('api', truck)
+    .post(`https://food-truck-back-end.herokuapp.com/operators/trucks/`, truck)
   
     return (dispatch) => {
       dispatch({
@@ -70,7 +70,7 @@ export const addTruck = (truck) => {
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
-    .delete(`api/${id}`)
+    .delete(`https://food-truck-back-end.herokuapp.com/operators/trucks/${id}`)
   
     return (dispatch) => {
       dispatch({
@@ -94,7 +94,8 @@ export const addTruck = (truck) => {
 
 export const favTruck = (truck) => {
   const request =  axiosWithAuth()
-  .post('api', truck)
+  //this route doesnt exist yet but somethinbg like this?
+  .post(`https://food-truck-back-end.herokuapp.com/diners/favtrucks/`, truck)
 
   return (dispatch) => {
     dispatch({
@@ -116,7 +117,8 @@ export const favTruck = (truck) => {
 
 export const deleteFavedTruck = (id) => {
   const request =  axiosWithAuth()
-  .delete(`api/${id}`)
+  //route doesnt exist yet
+  .delete(`https://food-truck-back-end.herokuapp.com/diners/favtrucks/${id}`)
 
   return (dispatch) => {
     dispatch({

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import { useHistory } from 'react-router-dom'
 
 const formSchema = yup.object().shape({
    name: yup.string().required("Please enter your full name"), 
@@ -14,14 +16,16 @@ const formSchema = yup.object().shape({
 
 
 export default function Diner(props){
+
+    const history = useHistory()
 const [formTate, setFormTate]=useState({
-    name:"",
+    // name:"",
     username:"",
     password:"",
-    email:"",
+    // email:"",
     location:"",
-    favoritetrucks: [],
-    terms: false
+    // favoritetrucks: [],
+    // terms: false
 })
 const [error, seterror] = useState({
     name:"",
@@ -70,11 +74,40 @@ const inputChange = e =>{
     let value=e.target.type === "checkbox" ? e.target.checked : e.target.value
     setFormTate({...formTate, [e.target.name]:value});
 }
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+    //axiosWithAuth call
+    axiosWithAuth()
+    //posting our register data to the register api
+      .post(`https://food-truck-back-end.herokuapp.com/diners/`, formTate)
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setFormTate({
+            // name:"",
+            username:"",
+            password:"",
+            // email:"",
+            // terms: false,
+            location:''
+        })
+        console.log(res.data)
+        //pushes us to the /operatorDashboard
+        history.push('/diner-dashboard')
+
+      })
+      .catch(err => console.log(err)) 
+
+
+  }
+
 console.log(props)
     return (
-            <form onSubmit={props.formSubmit}> 
+            <form onSubmit={handleSubmit}> 
             <h2>Diners registration</h2>
-            <label htmlFor="name">Full Name </label>
+            {/* <label htmlFor="name">Full Name </label>
                 <div className="form-group">
                     <input 
                     type="text"
@@ -94,7 +127,7 @@ console.log(props)
                     onChange={inputChange}
                     />
                     {error.email.length > 0 ? <p className = "error">{error.email}</p> : null}
-                </div>
+                </div> */}
             <label htmlFor="username">Please enter a username</label>  
                 <div className="form-group">
                     <input
@@ -129,7 +162,7 @@ console.log(props)
                 </div>
 
                 <div className="form-group">
-                <label htmlFor="terms">Terms & Conditions</label>
+                {/* <label htmlFor="terms">Terms & Conditions</label>
                     <input
                     type="checkbox"
                     name="terms"
@@ -138,7 +171,7 @@ console.log(props)
                     onChange={inputChange}
                     />
                     {error.terms.length > 0 ? <p className = "error">{error.terms}</p> : null}
-                    <br/>
+                    <br/> */}
                 <button type="submit" >Submit</button>
                 </div>
                 

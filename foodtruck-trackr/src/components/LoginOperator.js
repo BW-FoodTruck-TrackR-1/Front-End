@@ -4,8 +4,6 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth'
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const H2 = styled.h2`
   font-size: 1.8rem;
