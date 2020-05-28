@@ -88,7 +88,7 @@ export const OperatorReducer = (
         isfetchingOperator: false,
         fetched: true,
         trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
+        allOtherTrucks: action.payload
       };
     case ERR:
       return {
