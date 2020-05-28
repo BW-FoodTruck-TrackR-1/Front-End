@@ -75,30 +75,8 @@ function LoginDiner(props) {
     );
   };
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted!");
-
-    //const loginStateValue =  ;
-    axios
-      .post("https://reqres.in/api/users", diner)
-      .then((res) => {
-        const resData = res.data;
-        console.log(resData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    setDiner({
-      username: "",
-      password: "",
-      diner: false,
-    });
-  };
-
   return (
-    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+    <Form autoComplete="off" onSubmit={(e) => props.formSubmit(e)}>
       <Container>
         <H2>Diner</H2>
       </Container>
@@ -127,21 +105,6 @@ function LoginDiner(props) {
             placeholder="Password"
             value={diner.password}
             onChange={changeHandler}
-          />
-        </div>
-      </Container>
-      <Container>
-        <div className="labelDiv">
-          <Label htmlFor="diner">Diner?</Label>
-        </div>
-        <div className="inputDiv">
-          <Input
-            type="checkbox"
-            name="diner"
-            placeholder="diner"
-            value={diner.diner}
-            onChange={changeHandler}
-            checked={diner.diner}
           />
         </div>
       </Container>
