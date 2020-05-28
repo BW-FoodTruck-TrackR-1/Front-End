@@ -58,34 +58,25 @@ const StyledLink2 = styled(Link)`
 `;
 
 function Login(props) {
-  const [loginState, setLoginState] = useState({
-    username: "",
-    password: "",
-    diner: false,
-    operator: false,
-  });
+  const [dinerState, setDinerState] = useState();
+  const [operatorState, setOperatorState] = useState();
 
-  const formSubmit = (e) => {
+  const dinerSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted!");
-
-    //const loginStateValue =  ;
+    console.log("form submitted");
     axios
-      .post("https://reqres.in/api/users", loginState)
-      .then((res) => {
-        const resData = res.data;
-        console.log(resData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .post("https://reqres.in/api/users", dinerState)
+      .then((response) => props.use(response.data))
+      .catch((err) => console.log(err));
+  };
 
-    setLoginState({
-      username: "",
-      password: "",
-      diner: false,
-      operator: false,
-    });
+  const operatorSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    axios
+      .post("https://reqres.in/api/users", operatorState)
+      .then((response) => props.use(response.data))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -109,10 +100,10 @@ function Login(props) {
         </Container>
       </Route>
       <Route exact path="/login/diner">
-        <LoginDiner />
+        <LoginDiner formSubmit={dinerSubmit} />
       </Route>
       <Route exact path="/login/operator">
-        <LoginOperator />
+        <LoginOperator formSubmit={operatorSubmit} />
       </Route>
     </Div>
   );
