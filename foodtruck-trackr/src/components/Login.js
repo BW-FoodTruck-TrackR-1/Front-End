@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import LoginDiner from "./LoginDiner";
 import LoginOperator from "./LoginOperator";
-
 const Div = styled.div`
   margin: auto;
   margin-top: 125px;
@@ -56,7 +55,6 @@ const StyledLink2 = styled(Link)`
   left: 220px;
   bottom: 100px;
 `;
-
 function Login(props) {
   const [loginState, setLoginState] = useState({
     username: "",
@@ -64,30 +62,26 @@ function Login(props) {
     diner: false,
     operator: false,
   });
-
-  const formSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted!");
-
-    //const loginStateValue =  ;
-    axios
-      .post("https://reqres.in/api/users", loginState)
-      .then((res) => {
-        const resData = res.data;
-        console.log(resData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    setLoginState({
-      username: "",
-      password: "",
-      diner: false,
-      operator: false,
-    });
-  };
-
+  // const formSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form Submitted!");
+  //   //const loginStateValue =  ;
+  //   axios
+  //     .post("https://reqres.in/api/users", loginState)
+  //     .then((res) => {
+  //       const resData = res.data;
+  //       console.log(resData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   setLoginState({
+  //     username: "",
+  //     password: "",
+  //     diner: false,
+  //     operator: false,
+  //   });
+  // };
   return (
     <Div>
       <Route exact path="/login">
@@ -117,5 +111,4 @@ function Login(props) {
     </Div>
   );
 }
-
 export default Login;
