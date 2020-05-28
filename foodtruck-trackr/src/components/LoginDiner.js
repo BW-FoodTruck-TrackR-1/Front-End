@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {axiosWithAuth} from '../utils/AxiosWithAuth'
+import { useHistory } from 'react-router-dom'
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 
@@ -54,6 +56,7 @@ const StyledLink = styled(Link)`
 `;
 
 function LoginDiner(props) {
+  const history = useHistory()
   const [diner, setDiner] = useState({
     username: "",
     password: "",
@@ -75,8 +78,37 @@ function LoginDiner(props) {
     );
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    //axiosWithAuth call
+    axiosWithAuth()
+    //posting our register data to the register api
+      .post(`https://food-truck-back-end.herokuapp.com/diners/login`, diner)
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setDiner({
+            // name:"",
+            username:"",
+            password:"",
+            // email:"",
+            // terms: false,
+            // location:''
+        })
+        console.log(res.data)
+        //pushes us to the /dinerDashboard
+        history.push('/diner-dashboard')
+
+      })
+      .catch(err => console.log(err)) 
+
+
+  }
+
+
   return (
-    <Form autoComplete="off" onSubmit={(e) => props.formSubmit(e)}>
+    <Form autoComplete="off" onSubmit={handleSubmit}>
       <Container>
         <H2>Diner</H2>
       </Container>

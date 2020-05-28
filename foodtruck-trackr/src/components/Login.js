@@ -56,34 +56,6 @@ const StyledLink2 = styled(Link)`
   bottom: 100px;
 `;
 function Login(props) {
-<<<<<<< HEAD
-  const [loginState, setLoginState] = useState({
-    username: "",
-    password: "",
-    diner: false,
-    operator: false,
-  });
-  // const formSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Form Submitted!");
-  //   //const loginStateValue =  ;
-  //   axios
-  //     .post("https://reqres.in/api/users", loginState)
-  //     .then((res) => {
-  //       const resData = res.data;
-  //       console.log(resData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   setLoginState({
-  //     username: "",
-  //     password: "",
-  //     diner: false,
-  //     operator: false,
-  //   });
-  // };
-=======
   const [dinerState, setDinerState] = useState();
   const [operatorState, setOperatorState] = useState();
 
@@ -105,7 +77,6 @@ function Login(props) {
       .catch((err) => console.log(err));
   };
 
->>>>>>> 73b387dbf2e91a33b72b90bfe15f3e0203abf7fb
   return (
     <Div>
       <Route exact path="/login">
