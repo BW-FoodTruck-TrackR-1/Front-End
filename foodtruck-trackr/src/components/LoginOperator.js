@@ -4,6 +4,8 @@ import { axiosWithAuth } from '../utils/AxiosWithAuth'
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const H2 = styled.h2`
   font-size: 1.8rem;
@@ -67,8 +69,7 @@ function LoginOperator(props) {
   const changeHandler = (e) => {
     e.preventDefault();
     let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let value = e.target.value;
     setOperator(
       {
         ...operator,

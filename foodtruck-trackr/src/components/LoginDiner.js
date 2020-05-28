@@ -3,7 +3,7 @@ import axios from "axios";
 import {axiosWithAuth} from '../utils/AxiosWithAuth'
 import { useHistory } from 'react-router-dom'
 import styled from "styled-components";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const H2 = styled.h2`
   font-size: 1.8rem;
@@ -60,21 +60,18 @@ function LoginDiner(props) {
   const [diner, setDiner] = useState({
     username: "",
     password: "",
-    diner: false,
   });
 
   const changeHandler = (e) => {
     e.preventDefault();
     let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let value = e.target.value;
     setDiner(
       {
         ...diner,
         [name]: value,
       },
-      console.log("diner value:", diner),
-      console.log("checked!", e.target.checked)
+      console.log("diner value:", diner)
     );
   };
 
