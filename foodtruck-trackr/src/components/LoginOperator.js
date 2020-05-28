@@ -107,21 +107,6 @@ function LoginOperator(props) {
         </div>
       </Container>
       <Container>
-        <div className="labelDiv">
-          <Label htmlFor="operator">Operator?</Label>
-        </div>
-        <div className="inputDiv">
-          <Input
-            type="checkbox"
-            name="operator"
-            placeholder="operator"
-            //value={operator.operator}
-            onChange={changeHandler}
-            checked={operator.operator}
-          />
-        </div>
-      </Container>
-      <Container>
         <Button>Login</Button>
       </Container>
       <Container>
