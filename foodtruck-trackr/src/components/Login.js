@@ -5,17 +5,7 @@ import { Route, Link } from "react-router-dom";
 import LoginDiner from "./LoginDiner";
 import LoginOperator from "./LoginOperator";
 
-const H1 = styled.h1`
-  font-size: 2rem;
-  width: 500px;
-  color: #ffc23b;
-`;
-const H2 = styled.h2`
-  font-size: 1.8rem;
-  width: 500px;
-  color: #ffc23b;
-`;
-const Form = styled.form`
+const Div = styled.div`
   margin: auto;
   margin-top: 125px;
   padding: 50px;
@@ -30,6 +20,11 @@ const Form = styled.form`
   top: 50;
   left: 50;
 `;
+const H1 = styled.h1`
+  font-size: 2rem;
+  width: 500px;
+  color: #ffc23b;
+`;
 const Container = styled.div`
   height: 100px;
   width: 300px;
@@ -37,21 +32,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-const Button = styled.button`
-  height: 60px;
-  width: 150px;
-  background-color: #fecb00;
-  border-radius: 5px;
-`;
-const Input = styled.input`
-  height: 20px;
-  width: 200px;
-`;
-const Label = styled.label`
-  width: 100%;
-  font-size: 1.2rem;
-  color: #f7e976;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -76,20 +56,6 @@ const StyledLink2 = styled(Link)`
   left: 220px;
   bottom: 100px;
 `;
-const StyledLink3 = styled(Link)`
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  color: #c23b21;
-  height: 60px;
-  width: 120px;
-  background-color: #fecb00;
-  border-radius: 5px;
-`;
 
 function Login(props) {
   const [loginState, setLoginState] = useState({
@@ -98,46 +64,6 @@ function Login(props) {
     diner: false,
     operator: false,
   });
-
-  const [diner, setDiner] = useState({
-    username: "",
-    password: "",
-    diner: false,
-  });
-
-  const [operator, setOperator] = useState({
-    username: "",
-    password: "",
-    operator: false,
-  });
-
-  const changeHandlerDiner = (e) => {
-    e.preventDefault();
-    let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setDiner(
-      {
-        ...diner,
-        [name]: value,
-      },
-      console.log("diner value:", diner),
-      console.log("checked!", e.target.checked)
-    );
-  };
-  const changeHandlerOperator = (e) => {
-    e.preventDefault();
-    let name = e.target.name;
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setOperator(
-      {
-        ...operator,
-        [name]: value,
-      },
-      console.log("operator value:", operator)
-    );
-  };
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -154,16 +80,6 @@ function Login(props) {
         console.log(err);
       });
 
-    setDiner({
-      username: "",
-      password: "",
-      diner: false,
-    });
-    setOperator({
-      username: "",
-      password: "",
-      operator: false,
-    });
     setLoginState({
       username: "",
       password: "",
@@ -173,7 +89,7 @@ function Login(props) {
   };
 
   return (
-    <Form autoComplete="off" onSubmit={(e) => formSubmit(e)}>
+    <Div>
       <Route exact path="/login">
         <Container>
           <div>
@@ -198,7 +114,7 @@ function Login(props) {
       <Route exact path="/login/operator">
         <LoginOperator />
       </Route>
-    </Form>
+    </Div>
   );
 }
 
