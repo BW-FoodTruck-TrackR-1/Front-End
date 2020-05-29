@@ -16,9 +16,9 @@ const FavoriteTrucks = ({ trucks, getTrucks }) => {
         ))}
       </div>
 
-      <div>
+      <div class="delete" > 
         {trucks.map((item) => (
-          <TruckCard truck={item} buttonText="Remove" />
+          <button truck={item} buttonText="Remove" onClick={this.deleteFavedTruck} ></button>
         ))}
       </div>
     </div>
