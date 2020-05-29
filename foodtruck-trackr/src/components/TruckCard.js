@@ -11,9 +11,9 @@ const TruckCard = (props) => {
   return (
     <div>
       <div className='truck-card'>
-          {props.trucksOwned.map((truck) => {
+          {/* {props.truck.map((truck) => {
               return <Truck key={truck.id} truck={truck} />
-          })}
+          })} */}
 
       </div>
     </div>
