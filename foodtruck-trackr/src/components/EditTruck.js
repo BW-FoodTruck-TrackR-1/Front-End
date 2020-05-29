@@ -185,7 +185,7 @@ function EditTruckForm(props) {
   };
   const formSubmit = (e) => {
     e.preventDefault();
-    editTruck()
+    editTruck(id, truckState)
   };
   return (
     <Form autoComplete="off" onSubmit={formSubmit}>
