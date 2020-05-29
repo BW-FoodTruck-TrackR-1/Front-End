@@ -15,7 +15,7 @@ import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js
 
 function AddTruck() {
   const history = useHistory()
-  const {id} = useParams()
+  const id = useParams()
 
   // const [truckState, setTruckState] = useState({
   //   cuisineType: "",
@@ -34,10 +34,10 @@ function AddTruck() {
   //   ],
   // });
   const [truckState, setTruckState] = useState({
-    name: '',
-    cuisine_type: "",
     customer_rating: '',
-    image: '',
+    cuisine_type: "",
+    name: '',
+    // image: '',
     // menu: [
     //   {
     //     itemName: "",
@@ -60,7 +60,7 @@ function AddTruck() {
       customerRatingAvg: [],
     },
   ]);
-  console.log(truckState.menu);
+  // console.log(truckState.menu);
 
   // ADDTRUCK
 
@@ -102,7 +102,7 @@ function AddTruck() {
   const handleSubmit = (e) => {
      e.preventDefault()
     // const truckID = id.id
-    TruckActions.addTruck(id, truckState)
+    TruckActions.addTruck(id.id, truckState)
   }
 
   return (
@@ -122,6 +122,7 @@ function AddTruck() {
         </div>
         <div className="inputDiv">
           <Input
+          type='text'
             name="name"
             placeholder="Name"
             value={truckState.name}
@@ -131,10 +132,11 @@ function AddTruck() {
       </Container>
       <Container>
         <div className="labelDiv">
-          <Label htmlFor="cuisineType">Cuisine Type</Label>
+          <Label htmlFor="cuisine_type">Cuisine Type</Label>
         </div>
         <div className="inputDiv">
           <Input
+          type='text'
             name="cuisine_type"
             placeholder="Cuisine type"
             value={truckState.cuisine_type}
@@ -148,6 +150,7 @@ function AddTruck() {
         </div>
         <div className="inputDiv">
           <Input
+            type='text'
             name="customer_rating"
             placeholder="avg Customer Rating"
             value={truckState.customer_rating}
@@ -234,12 +237,12 @@ function AddTruck() {
     </Form>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-      truck: state.truck
+// const mapStateToProps = (state) => {
+//   return {
+//       truck: state.truck
 
-  }
-}
+//   }
+// }
 
 export default connect(
   state => state,
