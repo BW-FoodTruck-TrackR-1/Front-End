@@ -142,9 +142,9 @@ export const deleteFavedTruck = (id) => {
   }
 }
 
-export const editTruck = (truck) => {
+export const editTruck = (id, truck) => {
   const request =  axiosWithAuth()
-  .put('api'${id}, truck)
+  .put(`https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`, truck)
 
   return (dispatch) => {
     dispatch({
