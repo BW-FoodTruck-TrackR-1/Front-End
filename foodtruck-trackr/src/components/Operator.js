@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {axiosWithAuth} from '../utils/AxiosWithAuth'
 import * as yup from 'yup';
-import { useHistory } from 'react-router-dom'
-
+import { useHistory } from 'react-router-dom';
+import {H2, Container, Label, Form, Input, Button} from "./Styles.js";
 const formSchema = yup.object().shape({
     name: yup.string().required("Please enter your full name"), 
     username: yup.string().required("Please enter a unique username"),
@@ -80,7 +80,7 @@ const handleSubmit = (e) => {
     //axiosWithAuth call
     axiosWithAuth()
     //posting our register data to the register api
-      .post(`https://food-truck-back-end.herokuapp.com/operators/`, formState)
+      .post(`https://food-truck-back-end.herokuapp.com/operators/auth/register`, formState)
       .then((res) => {
         //setting the token so were authorized to access content
         // localStorage.setItem('token', (res.data.payload))
@@ -118,44 +118,53 @@ const handleSubmit = (e) => {
   
 
     return (
-        <form onSubmit={handleSubmit}> 
-            <h2>Operator registration</h2>
-            {/* <label htmlFor="name">Full Name </label>
+        <Form onSubmit={handleSubmit}> 
+            <Container>
+            <H2>Operator registration</H2>
+            </Container>
+            {/*
+            <Container>
+            <Label htmlFor="name">Full Name </Label>
                 <div className="form-group">
-                    <input 
+                    <Input 
                     type="text"
                     name="name"
                     value={formState.name}
                     onChange={inputChange}
                     />
                     {errorState.name.length > 0 ? (<p className = "error">{errorState.name}</p>) : null}
-                </div> */}
-            {/* <label htmlFor="email">Enter your Email </label>
-
+                </div>
+                </Container> */}
+            {/* 
+                <Container>
+                <Label htmlFor="email">Enter your Email </Label>
                 <div className="form-group">
-                    <input
+                    <Input
                     type="text"
                     name="email"
                     value={formState.email}
                     onChange={inputChange}
                     />
                     {errorState.email.length > 0 ? (<p className = "error">{errorState.email}</p>) : null}
-                </div> */}
-            <label htmlFor="username">Please enter a username</label>  
+                </div> 
+                </Container>
+                */}
+                <Container>
+            <Label htmlFor="username">Please enter a username</Label>  
                 <div className="form-group">
-                    <input
+                    <Input
                     type="text"
                     name="username"
                     value={formState.username}
                     onChange={inputChange}
                     />
                      {errorState.username.length > 0 ? (<p className = "error">{errorState.username}</p>) : null}
-                </div>              
-
-            <label htmlFor="password">Please enter a password </label>
-
+                </div>  
+                </Container>            
+                <Container>
+                <Label htmlFor="password">Please enter a password </Label>
                 <div className="form-group">
-                    <input
+                    <Input
                     type="text"
                     name="password"
                     value={formState.password}
@@ -163,19 +172,24 @@ const handleSubmit = (e) => {
                     />
                     {errorState.password.length > 0 ? (<p className = "error">{errorState.password}</p>) : null}
                 </div>
-
-                {/* <label htmlFor="location">Please enter a location </label>
+                </Container>
+                {/*
+                <Container>
+                <Label htmlFor="location">Please enter a location </Label>
                 <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="location"
                     value={formState.location}
                     onChange={inputChange}
                     />
-                </div> */}
+                </div> 
+                </Container */}
 
-                {/* <label htmlFor="terms">Terms & Conditions</label>
-                    <input
+                {/*
+                <Container> 
+                <Label htmlFor="terms">Terms & Conditions</Label>
+                    <Input
                     type="checkbox"
                     id="terms"
                     name="terms"
@@ -183,11 +197,13 @@ const handleSubmit = (e) => {
                     onChange={inputChange}
                     />
                     {errorState.terms.length > 0 ? (<p className = "error">{errorState.terms}</p>) : null}
-                    <br/> */}
-                   {/* <button type="submit" disabled={buttonDisabled}>Submit</button> */}
-                    <button type="submit">Submit</button>
+                    <br/> 
+                    </Container>
+                    */}
+                   {/* <Button type="submit" disabled={buttonDisabled}>Submit</Button> */}
+                    <Button type="submit">Submit</Button>
                 
             
-        </form>
+        </Form>
     )
 }

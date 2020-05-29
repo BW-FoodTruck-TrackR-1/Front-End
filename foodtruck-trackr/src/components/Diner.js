@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/AxiosWithAuth";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-
+import { H2, Container, Label, Form, Input, Button } from "./Styles.js";
 const formSchema = yup.object().shape({
   name: yup.string().required("Please enter your full name"),
   username: yup.string().required("Please enter a unique username"),
@@ -20,16 +21,16 @@ const formSchema = yup.object().shape({
   terms: yup.boolean().oneOf([true], "Please agree to terms"),
   favoritetrucks: yup.array(),
 });
-
 export default function Diner(props) {
+  const history = useHistory();
   const [formState, setFormTate] = useState({
-    name: "",
+    // name: "",
     username: "",
     password: "",
-    email: "",
+    // email: "",
     location: "",
-    favoritetrucks: [],
-    terms: false,
+    // favoritetrucks: [],
+    // terms: false
   });
   const [errorState, setErrorState] = useState({
     name: "",
@@ -40,9 +41,7 @@ export default function Diner(props) {
     terms: "",
     favoritetrucks: [],
   });
-
   const [buttonDisabled, setButtonDisabled] = useState(true);
-
   useEffect(() => {
     formSchema
       .isValid(formState)
@@ -53,7 +52,6 @@ export default function Diner(props) {
         console.log("err", err);
       });
   }, [formState]);
-
   const validate = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -74,7 +72,6 @@ export default function Diner(props) {
         });
       });
   };
-
   const inputChange = (e) => {
     e.persist();
     console.log("Input changed!", e.target.value, e.target.checked);
@@ -86,93 +83,119 @@ export default function Diner(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.formSubmit(formState);
+    //axiosWithAuth call
+    axiosWithAuth()
+      //posting our register data to the register api
+      .post(
+        `https://food-truck-back-end.herokuapp.com/diners/auth/register`,
+        formState
+      )
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setFormTate({
+          // name:"",
+          username: "",
+          password: "",
+          // email:"",
+          // terms: false,
+          location: "",
+        });
+        console.log(res.data);
+        //pushes us to the /operatorDashboard
+        history.push("/diner-dashboard");
+      })
+      .catch((err) => console.log(err));
   };
-  //console.log(props)
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Diners registration</h2>
-      <label htmlFor="name">Full Name </label>
-      <div className="form-group">
-        <input
-          type="text"
-          name="name"
-          value={formState.name}
-          onChange={inputChange}
-        />
-        {errorState.name.length > 0 ? (
-          <p className="error">{errorState.name}</p>
-        ) : null}
-      </div>
-      <label htmlFor="email">Enter your Email </label>
-
-      <div className="form-group">
-        <input
-          type="text"
-          name="email"
-          value={formState.email}
-          onChange={inputChange}
-        />
-        {errorState.email.length > 0 ? (
-          <p className="error">{errorState.email}</p>
-        ) : null}
-      </div>
-      <label htmlFor="username">Please enter a username</label>
-      <div className="form-group">
-        <input
-          type="text"
-          name="username"
-          value={formState.username}
-          onChange={inputChange}
-        />
-        {errorState.username.length > 0 ? (
-          <p className="error">{errorState.username}</p>
-        ) : null}
-      </div>
-
-      <label htmlFor="password">Please enter a password </label>
-
-      <div className="form-group">
-        <input
-          type="text"
-          name="password"
-          value={formState.password}
-          onChange={inputChange}
-        />
-        {errorState.password.length > 0 ? (
-          <p className="error">{errorState.password}</p>
-        ) : null}
-      </div>
-
-      <label htmlFor="location">Enter your current address</label>
-      <div className="form-group">
-        <input
-          type="text"
-          name="location"
-          value={formState.location}
-          onChange={inputChange}
-        />
-        {errorState.location.length > 0 ? (
-          <p className="error">{errorState.location}</p>
-        ) : null}
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="terms">Terms & Conditions</label>
-        <input
-          type="checkbox"
-          name="terms"
-          value={formState.terms}
-          onChange={inputChange}
-        />
-        {errorState.terms.length > 0 ? (
-          <p className="error">{errorState.terms}</p>
-        ) : null}
-        <br />
-        <button type="submit" disabled={buttonDisabled}>
-          Submit
-        </button>
-      </div>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <Container>
+        <H2>Diners registration</H2>
+      </Container>
+      {/* <Container>
+            <Label htmlFor="name">Full Name </Label>
+            <div className="form-group">
+                <Input
+                    type="text"
+                    name="name"
+                    value={formState.name}
+                    onChange={inputChange}
+                />
+                {errorState.name.length > 0 ? (<p className="error">{errorState.name}</p>) : null}
+            </div>
+            </Container>
+            <Container>
+            <Label htmlFor="email">Enter your Email </Label>
+            <div className="form-group">
+                <Input
+                    type="text"
+                    name="email"
+                    value={formState.email}
+                    onChange={inputChange}
+                />
+                {errorState.email.length > 0 ? (<p className="error">{errorState.email}</p>) : null}
+            </div>
+            </Container> */}
+      <Container>
+        <Label htmlFor="username">Please enter a username</Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="username"
+            value={formState.username}
+            onChange={inputChange}
+          />
+          {errorState.username.length > 0 ? (
+            <p className="error">{errorState.username}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <Label htmlFor="password">Please enter a password </Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="password"
+            value={formState.password}
+            onChange={inputChange}
+          />
+          {errorState.password.length > 0 ? (
+            <p className="error">{errorState.password}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <Label htmlFor="location">Enter your current address</Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="location"
+            value={formState.location}
+            onChange={inputChange}
+          />
+          {errorState.location.length > 0 ? (
+            <p className="error">{errorState.location}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <div className="form-group">
+          {/* <Label htmlFor="terms">Terms & Conditions</Label>
+                <Input
+                    type="checkbox"
+                    name="terms"
+                    value={formState.terms}
+                    onChange={inputChange}
+                /> */}
+          {errorState.terms.length > 0 ? (
+            <p className="error">{errorState.terms}</p>
+          ) : null}
+          <br />
+          {/* <Button type="submit" disabled={buttonDisabled} >Submit</Button> */}
+          <Button type="submit">Submit</Button>
+        </div>
+      </Container>
+    </Form>
   );
 }

@@ -4,25 +4,8 @@ import Diner from "./Diner.js";
 import Operator from "./Operator.js";
 import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
+import { StyledLink } from "./Styles.js";
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    background-color: #c23b21;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 15px;
-    margin-right: 40px;
-  }
-`;
 export default function Register(props) {
   const [dinerState, setDinerState] = useState();
   const [operatorState, setOperatorState] = useState();

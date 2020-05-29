@@ -5,7 +5,7 @@ import Register from "./components/Register.js";
 import styled from "styled-components";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
-import TruckForm from "./components/TruckForm";
+import AddTruck from "./components/AddTruck";
 import Operator from "./components/Operator";
 import Diner from "./components/Diner";
 import OperatorDashboard from "./components/OperatorDashboard";
@@ -63,7 +63,7 @@ function App() {
         <Login />
       </Route>
       <Route exact path="/truck">
-        <TruckForm />
+        <AddTruck />
       </Route>
       <Route path="/operator-dashboard">
         <OperatorDashboard />
@@ -71,7 +71,7 @@ function App() {
       <Route path="/diner-dashboard">
         <DinerDashboard />
       </Route>
-      {/* <TruckCard /> */}
+      <TruckCard />
     </div>
   );
 }
