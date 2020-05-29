@@ -1,6 +1,7 @@
 
 import {axiosWithAuth} from "../utils/AxiosWithAuth";
 
+
 export const FETCHING_TRUCKS = 'FETCHING_TRUCKS'
 export const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS'
 export const FETCHING_TRUCKS_FAIL = 'FETCHING_TRUCKS_FAIL'
@@ -25,11 +26,7 @@ export const EDITING_TRUCK_SUCCESS = 'EDITING_TRUCK_SUCCESS'
 
 export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
-<<<<<<< HEAD
-    .get(`https://food-truck-back-end.herokuapp.com/operators/trucks/`)
-=======
-    .get('https://food-truck-back-end.herokuapp.com/operators/',getthattruck)
->>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
+    .get('https://food-truck-back-end.herokuapp.com/operators/1/trucks',getthattruck)
 
     return (dispatch) => {
         dispatch({
@@ -53,13 +50,9 @@ export const getTrucks = (getthattruck) => {
 }
 
 
-export const addTruck = (truck) => {
+export const addTruck = (id, truck) => {
     const request =  axiosWithAuth()
-<<<<<<< HEAD
-    .post(`https://food-truck-back-end.herokuapp.com/operators/trucks/`, truck)
-=======
-    .post('https://food-truck-back-end.herokuapp.com/operators/', truck)
->>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
+    .post(`https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`, truck)
   
     return (dispatch) => {
       dispatch({
@@ -81,11 +74,7 @@ export const addTruck = (truck) => {
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
-<<<<<<< HEAD
-    .delete(`https://food-truck-back-end.herokuapp.com/operators/trucks/${id}`)
-=======
     .delete(`https://food-truck-back-end.herokuapp.com/operators/${id}`)
->>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
   
     return (dispatch) => {
       dispatch({
@@ -153,9 +142,9 @@ export const deleteFavedTruck = (id) => {
   }
 }
 
-export const editTruck = (truck) => {
+export const editTruck = (id, truck) => {
   const request =  axiosWithAuth()
-  .put('api'${id}, truck)
+  .put(`https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`, truck)
 
   return (dispatch) => {
     dispatch({

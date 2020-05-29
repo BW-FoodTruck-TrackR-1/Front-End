@@ -10,8 +10,8 @@ return (
 
         hi. this is the dashboard for operators
         <div>
-            <OperatorTrucks />
-            <TruckForm />
+            {/* <OperatorTrucks />
+            <TruckForm /> */}
 
         </div>
     </div>
