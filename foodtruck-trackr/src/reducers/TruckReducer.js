@@ -11,7 +11,9 @@ import {
   FAV_TRUCK_SUCCESS,
   FAV_TRUCK_FAIL,
   DELETING_FAVED_TRUCK,
-  DELETED_FAVED_TRUCK_SUCCESS
+  DELETED_FAVED_TRUCK_SUCCESS,
+  EDITING_TRUCK,
+  EDITING_TRUCK_SUCCESS
 } from "../actions/TruckActions";
 
 const initialStateOperator = {
@@ -103,6 +105,21 @@ export const OperatorReducer = (
         fetched: false,
       };
     case DELETED:
+      return {
+        ...state,
+        isfetchingOperator: false,
+        fetched: true,
+        trucksOwned: action.payload,
+        allOtherTrucks: action.payload,
+      };
+
+      case EDITING_TRUCK:
+      return {
+        ...state,
+        isfetchingOperator: true,
+        fetched: false,
+      };
+    case EDITING_TRUCK_SUCCESS:
       return {
         ...state,
         isfetchingOperator: false,

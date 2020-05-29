@@ -19,6 +19,9 @@ export const FAV_TRUCK_FAIL ='FAV_TRUCK_FAIL'
 export const DELETING_FAVED_TRUCK = 'DELETING_FAVED_TRUCK'
 export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
+export const EDITING_TRUCK = 'EDITING_TRUCK'
+export const EDITING_TRUCK_SUCCESS = 'EDITING_TRUCK_SUCCESS'
+
 
 export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
@@ -125,6 +128,28 @@ export const deleteFavedTruck = (id) => {
     request.then(response => {
       dispatch({
         type: DELETED_FAVED_TRUCK_SUCCESS,
+        payload: response.data
+      })
+    }).catch(error => {
+      dispatch({
+        type: ERR,
+        payload: error.message
+      })
+    })
+  }
+}
+
+export const editTruck = (truck) => {
+  const request =  axiosWithAuth()
+  .put('api'${id}, truck)
+
+  return (dispatch) => {
+    dispatch({
+      type: EDITING_TRUCK
+    })
+    request.then(response => {
+      dispatch({
+        type: EDITING_TRUCK_SUCCESS,
         payload: response.data
       })
     }).catch(error => {
