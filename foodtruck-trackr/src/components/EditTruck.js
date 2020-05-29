@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {connect} from 'react-redux';
+import Truck from './Truck'
+import TruckCard from './TruckCard'
 // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
 import * as TruckActions from '../actions/TruckActions'
 const H1 = styled.h1`
@@ -70,6 +72,24 @@ const StyledLink = styled(Link)`
   margin: 10px;
 `;
 
+// const initialState = 
+// {
+//     cuisineType: "",
+//     customerRating: [],
+//     customerRatingAvg: [],
+//     imageOfTruck: [],
+//     menu: [
+//       {
+//         itemName: "",
+//         itemDescription: "",
+//         itemPhoto: [],
+//         itemPrice: "",
+//         customerRating: [],
+//         customerRatingAvg: [],
+//       },
+//     ],
+//   }
+
 function EditTruckForm(props) {
   const { editTruck } = props
   const [truckState, setTruckState] = useState({
@@ -98,9 +118,44 @@ function EditTruckForm(props) {
       customerRatingAvg: [],
     },
   ]);
-  console.log(truckState.menu);
+
+  // edit area
+  const [edit,setEdit ]  = useState(false)
+  const [cuisineTypeToEdit,setcuisineTypeToEdit]=useState(cuisineType);
+  const [customerRatingToEdit,setcustomerRatingToEdit]=useState(customerRating);
+  const [customerRatingAvgToEdit,setcustomerRatingAvgToEdit]=useState(customerRatingAvg);
+  const [itemNameToEdit,setitemNameToEdit]=useState(itemName);
+
+
+  const [imageOfTruckToEdit,setimageOfTruckToEdit]=useState(imageOfTruck);
+
+
 
   
+  const editcuisineType = (cuisineType) => {
+    setEdit(true);
+    setcuisineTypeToEdit(cuisineType);
+  };
+
+
+  
+  const editimageOfTruck = (imageOfTruck) => {
+    setEdit(true);
+    setimageOfTruckToEdit(imageOfTruck);
+  };
+  
+  const edititemName = (itemName) => {
+    setEdit(true);
+    setitemNameToEdit(itemName);
+  };
+
+  const { editTruck } = props
+  
+  // onChange={(e) =>
+  //   setColorToEdit({ ...colorToEdit, color: e.target.value })
+  // }
+  // value={colorToEdit.color}
+
   
   const changeHandler = (e) => {
     e.persist();
@@ -153,6 +208,13 @@ function EditTruckForm(props) {
             placeholder="Cuisine type"
             value={truckState.cuisineType}
             onChange={changeHandler}
+
+  ///////////
+  onChange={(e) =>
+    setcuisineTypeToEdit({ ...cuisineTypeToEdit, cuisineType: e.target.value })
+  }
+  value={cuisineTypeToEdit.cuisineType}
+
           />
         </div>
       </Container>
@@ -166,6 +228,14 @@ function EditTruckForm(props) {
             value={truckState.imageOfTruck}
             onChange={handleImage}
             multiple
+
+  ///////////
+  onChange={(e) =>
+    setimageOfTruckToEdit({ ...imageOfTruckToEdit, imageOfTruck: e.target.value })
+  }
+  value={imageOfTruckToEdit.imageOfTruck}
+
+
           />
         </div>
       </Container>
@@ -197,6 +267,15 @@ function EditTruckForm(props) {
             placeholder="Item Name"
             value={menu.itemName}
             onChange={changeHandlerMenu}
+
+              ///////////
+  onChange={(e) =>
+    setitemNameToEdit({ ...itemNameToEdit, itemName: e.target.value })
+  }
+  value={itemNameToEdit.itemName}
+           
+          
+          
           />
         </div>
       </Container>
@@ -229,7 +308,24 @@ function EditTruckForm(props) {
         </div>
       </Container>
       <Container>
-        <Button> EDIT TRUCK</Button>
+
+      
+
+{Truck.map((cuisineType)=>(
+  <button key={cuisineType.cuisineType} onClick={()=> editcuisineType(cuisineType)}   ></button>
+
+))}
+{Truck.map((imageOfTruck)=>(
+  <button key={imageOfTruck.imageOfTruck} onClick={()=> editimageOfTruck(imageOfTruck)}   ></button>
+
+))}
+{Truck.map((itemName)=>(
+  <button key={itemName.itemName} onClick={()=> edititemName(itemName)}   ></button>
+
+))}
+
+
+        {/* <Button> EDIT TRUCK</Button> */}
       </Container>
     </Form>
   );
