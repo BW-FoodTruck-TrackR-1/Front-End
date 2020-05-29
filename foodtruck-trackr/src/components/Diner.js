@@ -185,6 +185,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import {H2, Container, Label, Form, Input, Button} from "./Styles.js";
+
 
 const formSchema = yup.object().shape({
     name: yup.string().required("Please enter your full name"),
@@ -266,13 +268,17 @@ export default function Diner(props) {
           e.preventDefault()
           props.formSubmit(formState)
     }
-    //console.log(props)
+    
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Diners registration</h2>
-            <label htmlFor="name">Full Name </label>
+        <Form onSubmit={handleSubmit}>
+            <Container>
+            <H2>Diners registration</H2>
+            </Container>
+
+            <Container>
+            <Label htmlFor="name">Full Name </Label>
             <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="name"
                     value={formState.name}
@@ -280,10 +286,12 @@ export default function Diner(props) {
                 />
                 {errorState.name.length > 0 ? (<p className="error">{errorState.name}</p>) : null}
             </div>
-            <label htmlFor="email">Enter your Email </label>
+            </Container>
 
+            <Container>
+            <Label htmlFor="email">Enter your Email </Label>
             <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="email"
                     value={formState.email}
@@ -291,9 +299,12 @@ export default function Diner(props) {
                 />
                 {errorState.email.length > 0 ? (<p className="error">{errorState.email}</p>) : null}
             </div>
-            <label htmlFor="username">Please enter a username</label>
+            </Container>
+
+            <Container>
+            <Label htmlFor="username">Please enter a username</Label>
             <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="username"
                     value={formState.username}
@@ -301,11 +312,13 @@ export default function Diner(props) {
                 />
                 {errorState.username.length > 0 ? (<p className="error">{errorState.username}</p>) : null}
             </div>
+            </Container>
 
-            <label htmlFor="password">Please enter a password </label>
+            <Container>
+            <Label htmlFor="password">Please enter a password </Label>
 
             <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="password"
                     value={formState.password}
@@ -313,20 +326,23 @@ export default function Diner(props) {
                 />
                 {errorState.password.length > 0 ? (<p className="error">{errorState.password}</p>) : null}
             </div>
+            </Container>
 
-            <label htmlFor="location">Enter your current address</label>
+            <Container>
+            <Label htmlFor="location">Enter your current address</Label>
             <div className="form-group">
-                <input
+                <Input
                     type="text"
                     name="location"
                     value={formState.location}
                     onChange={inputChange} />
                 {errorState.location.length > 0 ? (<p className="error">{errorState.location}</p>) : null}
             </div>
-
+            </Container>
+            <Container>
             <div className="form-group">
-                <label htmlFor="terms">Terms & Conditions</label>
-                <input
+                <Label htmlFor="terms">Terms & Conditions</Label>
+                <Input
                     type="checkbox"
                     name="terms"
 
@@ -335,11 +351,11 @@ export default function Diner(props) {
                 />
                 {errorState.terms.length > 0 ? (<p className="error">{errorState.terms}</p>) : null}
                 <br />
-                <button type="submit" disabled={buttonDisabled} >Submit</button>
+                <Button type="submit" disabled={buttonDisabled} >Submit</Button>
             </div>
+            </Container>
 
-
-        </form>
+        </Form>
     )
 }
 
