@@ -1,61 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styled from "styled-components";
-import { Route, Link } from "react-router-dom";
+import { Route} from "react-router-dom";
 import LoginDiner from "./LoginDiner";
 import LoginOperator from "./LoginOperator";
+import {Div, Container, H1, StyledLink, StyledLink2,} from "./Styles.js"
 
-const Div = styled.div`
-  margin: auto;
-  margin-top: 125px;
-  padding: 50px;
-  width: 500px;
-  height: 600px;
-  background-color: #c23b21;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 50;
-  left: 50;
-`;
-const H1 = styled.h1`
-  font-size: 2rem;
-  width: 500px;
-  color: #ffc23b;
-`;
-const Container = styled.div`
-  height: 100px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  font-size: 1.4rem;
-  color: #c4c4c4;
-  margin: 10px;
-`;
-const StyledLink2 = styled(Link)`
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8rem;
-  color: #c23b21;
-  height: 40px;
-  width: 60px;
-  background-color: #fecb00;
-  border-radius: 5px;
-  position: relative;
-  left: 220px;
-  bottom: 100px;
-`;
 
 function Login(props) {
   const [dinerState, setDinerState] = useState();
