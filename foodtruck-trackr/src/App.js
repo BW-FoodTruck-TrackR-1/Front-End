@@ -9,6 +9,8 @@ import TruckForm from "./components/TruckForm";
 import Operator from './components/Operator'
 import Diner from './components/Diner'
 import OperatorDashboard from './components/OperatorDashboard'
+import DinerDashboard from './components/DinerDashboard'
+import TruckCard from './components/TruckCard'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -69,6 +71,10 @@ function App() {
       <Route path="/operator-dashboard">
         <OperatorDashboard />
       </Route>
+      <Route path="/diner-dashboard">
+        <DinerDashboard />
+      </Route>
+      <TruckCard />
     </div>
   );
 }
