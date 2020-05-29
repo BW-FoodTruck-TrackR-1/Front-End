@@ -79,18 +79,22 @@ export const OperatorReducer = (
     case ADDING_TRUCK:
       return {
         ...state,
-        isfetchingOperator: true,
-        fetched: false,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
+        // isfetchingOperator: true,
+        // fetched: false,
+        // trucksOwned: action.payload,
+        // allOtherTrucks: action.payload,
+        name: action.payload,
+        cuisine_type: action.payload,
       };
     case ADDED:
       return {
         ...state,
-        isfetchingOperator: false,
-        fetched: true,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload
+        // isfetchingOperator: false,
+        // fetched: true,
+        // trucksOwned: action.payload,
+        // allOtherTrucks: action.payload
+        name: action.payload,
+        cuisine_type: action.payload,
       };
     case ERR:
       return {

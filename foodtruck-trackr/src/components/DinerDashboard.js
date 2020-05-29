@@ -10,9 +10,10 @@ import TruckCard from "./TruckCard";
 export default function DinerDashboard() {
   return (
     <div>
-      <SearchTrucks />
+      {/* <SearchTrucks />
       <TruckCard />
-      <FavTrucks />
+      <FavTrucks /> */}
+      hi this is the diner dashboard
     </div>
   );
 
