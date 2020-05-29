@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import React, {useState, useEffect} from 'react';
 // import axios from 'axios';
 // import * as yup from 'yup';
@@ -180,8 +179,6 @@
 //         </form>
 //     )
 // }
-=======
->>>>>>> 9ff00cd013900d7960ad2886547c19b400ffbd5f
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
