@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Route, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {connect} from 'react-redux';
 import * as TruckActions from '../actions/TruckActions';
@@ -17,6 +16,7 @@ import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js
 function TruckForm() {
   const history = useHistory()
   const {id} = useParams()
+
   // const [truckState, setTruckState] = useState({
   //   cuisineType: "",
   //   customerRating: [],
@@ -99,27 +99,10 @@ function TruckForm() {
 
   //   axios.post("https://reqres.in/api/users", truckState);
   // };
-
   const handleSubmit = (e) => {
      e.preventDefault()
-    //axiosWithAuth call
-    axiosWithAuth()
-    //posting our  data to the  api
-      .post(`https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`, truckState)
-      .then((res) => {
-
-        setTruckState({
-          name: '',
-          cuisine_type: "",
-          customer_rating: '',
-          image: '',
-        })
-        console.log(res.data)
-        //pushes us to the /operatorDashboard
-        history.push('/operator-dashboard')
-
-      })
-      .catch(err => console.log(err)) 
+    // const truckID = id.id
+    TruckActions.addTruck(id, truckState)
   }
 
   return (
@@ -172,9 +155,9 @@ function TruckForm() {
           />
         </div>
       </Container>
-      <Container>
+      {/* <Container>
         <div className="labelDiv">
-          <Label htmlFor="imageOfTruck">Upload Image(s) of Truck</Label>
+          <Label htmlFor="image">Upload Image(s) of Truck</Label>
         </div>
         <div className="inputDiv">
           <Input
@@ -185,7 +168,7 @@ function TruckForm() {
             multiple
           />
         </div>
-      </Container>
+      </Container> */}
       {/* <Container>
         <H2>Menu Items</H2>
       </Container>

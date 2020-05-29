@@ -1,6 +1,7 @@
 
 import {axiosWithAuth} from "../utils/AxiosWithAuth";
 
+
 export const FETCHING_TRUCKS = 'FETCHING_TRUCKS'
 export const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS'
 export const FETCHING_TRUCKS_FAIL = 'FETCHING_TRUCKS_FAIL'
@@ -22,7 +23,7 @@ export const DELETED_FAVED_TRUCK_SUCCESS = 'DELETING_FAVED_TRUCK_SUCCESS'
 
 export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
-    .get('https://food-truck-back-end.herokuapp.com/operators/',getthattruck)
+    .get('https://food-truck-back-end.herokuapp.com/operators/1/trucks',getthattruck)
 
     return (dispatch) => {
         dispatch({
@@ -46,9 +47,9 @@ export const getTrucks = (getthattruck) => {
 }
 
 
-export const addTruck = (truck) => {
+export const addTruck = (id, truck) => {
     const request =  axiosWithAuth()
-    .post('https://food-truck-back-end.herokuapp.com/operators/', truck)
+    .post(`https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`, truck)
   
     return (dispatch) => {
       dispatch({
