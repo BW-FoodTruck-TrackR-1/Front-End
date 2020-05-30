@@ -74,10 +74,10 @@ export default function Diner(props) {
         //axiosWithAuth call
         axiosWithAuth()
         //posting our register data to the register api
-          .post(`https://food-truck-back-end.herokuapp.com/diners/auth/register`, formState)
+          .post(`diners/auth/register`, formState)
           .then((res) => {
             //setting the token so were authorized to access content
-            // localStorage.setItem('token', (res.data.payload))
+            localStorage.setItem('token', (res.data.payload))
             //sets the form blank again
             setFormTate({
                 // name:"",

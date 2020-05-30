@@ -102,10 +102,11 @@ function AddTruck() {
   const handleSubmit = (e) => {
      e.preventDefault()
     // const truckID = id.id
-    TruckActions.addTruck(id.id, truckState)
+    TruckActions.addTruck(6, truckState)
   }
 
   return (
+
     <Form autoComplete="off" onSubmit={handleSubmit}>
       <Container>
         <SubDiv>
@@ -156,6 +157,7 @@ function AddTruck() {
             value={truckState.customer_rating}
             onChange={changeHandler}
           />
+          <button onClick={TruckActions.getTest}>test</button>
         </div>
       </Container>
       {/* <Container>
