@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 // import axios from "axios";
-import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import { axiosWithAuth } from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 
-import {H2, Form, Container, Button, Input, Label, StyledLink} from "./Styles.js"
+import {
+  H2,
+  Form,
+  Container,
+  Button,
+  Input,
+  Label,
+  StyledLink,
+} from "./Styles.js";
 import { Route, Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom'
-
-
+import { useHistory } from "react-router-dom";
 
 function LoginOperator(props) {
-
-  const history = useHistory()
+  const history = useHistory();
   const [operator, setOperator] = useState({
     username: "",
     password: "",
@@ -53,33 +58,37 @@ function LoginOperator(props) {
   //   });
   // };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     //axiosWithAuth call
     axiosWithAuth()
+<<<<<<< HEAD
     //posting our register data to the register api
       .post(`operators/auth/login`, operator)
+=======
+      //posting our register data to the register api
+      .post(
+        `https://food-truck-back-end.herokuapp.com/operators/auth/login`,
+        operator
+      )
+>>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
       .then((res) => {
         //setting the token so were authorized to access content
         // localStorage.setItem('token', (res.data.payload))
         //sets the form blank again
         setOperator({
-            // name:"",
-            username:"",
-            password:"",
-            // email:"",
-            // terms: false,
-            // location:''
-        })
-        console.log(res.data)
+          // name:"",
+          username: "",
+          password: "",
+          // email:"",
+          // terms: false,
+          // location:''
+        });
+        console.log(res.data);
         //pushes us to the /operatorDashboard
-        history.push('/operator-dashboard')
-
+        history.push("/operator-dashboard");
       })
-      .catch(err => console.log(err)) 
-
-
-  }
-
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Form autoComplete="off" onSubmit={handleSubmit}>

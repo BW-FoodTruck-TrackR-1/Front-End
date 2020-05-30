@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import {axiosWithAuth} from '../utils/AxiosWithAuth';
-import { useHistory } from 'react-router-dom'
-import * as yup from 'yup';
-import {H2, Container, Label, Form, Input, Button} from "./Styles.js";
+import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from "../utils/AxiosWithAuth";
+import { useHistory } from "react-router-dom";
+import * as yup from "yup";
+import { H2, Container, Label, Form, Input, Button } from "./Styles.js";
 const formSchema = yup.object().shape({
-    name: yup.string().required("Please enter your full name"),
-    username: yup.string().required("Please enter a unique username"),
-    password: yup.string().required("Please enter password")
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-            "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"),
-    email: yup.string().email("must be a valid email").required("Please enter a email"),
-    location: yup.string().required("Please enter your address"),
-    terms: yup.boolean().oneOf([true], "Please agree to terms"),
-    favoritetrucks: yup.array()
-})
+  name: yup.string().required("Please enter your full name"),
+  username: yup.string().required("Please enter a unique username"),
+  password: yup
+    .string()
+    .required("Please enter password")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+    ),
+  email: yup
+    .string()
+    .email("must be a valid email")
+    .required("Please enter a email"),
+  location: yup.string().required("Please enter your address"),
+  terms: yup.boolean().oneOf([true], "Please agree to terms"),
+  favoritetrucks: yup.array(),
+});
 export default function Diner(props) {
+<<<<<<< HEAD
     const history = useHistory()
     const [formState, setFormTate] = useState({
         // name: "",
@@ -102,6 +110,100 @@ export default function Diner(props) {
             <H2>Diners registration</H2>
             </Container>
             {/* <Container>
+=======
+  const history = useHistory();
+  const [formState, setFormTate] = useState({
+    // name: "",
+    username: "",
+    password: "",
+    // email: "",
+    location: "",
+    // favoritetrucks: [],
+    // terms: false
+  });
+  const [errorState, setErrorState] = useState({
+    name: "",
+    username: "",
+    password: "",
+    email: "",
+    location: "",
+    terms: "",
+    favoritetrucks: [],
+  });
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  useEffect(() => {
+    formSchema
+      .isValid(formState)
+      .then((valid) => {
+        setButtonDisabled(!valid);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }, [formState]);
+  const validate = (e) => {
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(value)
+      .then((valid) => {
+        setErrorState({
+          ...errorState,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err.errors);
+        setErrorState({
+          ...errorState,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  };
+  const inputChange = (e) => {
+    e.persist();
+    console.log("Input changed!", e.target.value, e.target.checked);
+    validate(e);
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setFormTate({ ...formState, [e.target.name]: value });
+    console.log(e.target.checked, "we hit the checkbox");
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //axiosWithAuth call
+    axiosWithAuth()
+      //posting our register data to the register api
+      .post(
+        `https://food-truck-back-end.herokuapp.com/diners/auth/register`,
+        formState
+      )
+      .then((res) => {
+        //setting the token so were authorized to access content
+        // localStorage.setItem('token', (res.data.payload))
+        //sets the form blank again
+        setFormTate({
+          // name:"",
+          username: "",
+          password: "",
+          // email:"",
+          // terms: false,
+          location: "",
+        });
+        console.log(res.data);
+        //pushes us to the /operatorDashboard
+        history.push("/diner-dashboard");
+      })
+      .catch((err) => console.log(err));
+  };
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Container>
+        <H2>Diners registration</H2>
+      </Container>
+      {/* <Container>
+>>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
             <Label htmlFor="name">Full Name </Label>
             <div className="form-group">
                 <Input
@@ -125,56 +227,65 @@ export default function Diner(props) {
                 {errorState.email.length > 0 ? (<p className="error">{errorState.email}</p>) : null}
             </div>
             </Container> */}
-            <Container>
-            <Label htmlFor="username">Please enter a username</Label>
-            <div className="form-group">
-                <Input
-                    type="text"
-                    name="username"
-                    value={formState.username}
-                    onChange={inputChange}
-                />
-                {errorState.username.length > 0 ? (<p className="error">{errorState.username}</p>) : null}
-            </div>
-            </Container>
-            <Container>
-            <Label htmlFor="password">Please enter a password </Label>
-            <div className="form-group">
-                <Input
-                    type="text"
-                    name="password"
-                    value={formState.password}
-                    onChange={inputChange}
-                />
-                {errorState.password.length > 0 ? (<p className="error">{errorState.password}</p>) : null}
-            </div>
-            </Container>
-            <Container>
-            <Label htmlFor="location">Enter your current address</Label>
-            <div className="form-group">
-                <Input
-                    type="text"
-                    name="location"
-                    value={formState.location}
-                    onChange={inputChange} />
-                {errorState.location.length > 0 ? (<p className="error">{errorState.location}</p>) : null}
-            </div>
-            </Container>
-            <Container>
-            <div className="form-group">
-                {/* <Label htmlFor="terms">Terms & Conditions</Label>
+      <Container>
+        <Label htmlFor="username">Please enter a username</Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="username"
+            value={formState.username}
+            onChange={inputChange}
+          />
+          {errorState.username.length > 0 ? (
+            <p className="error">{errorState.username}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <Label htmlFor="password">Please enter a password </Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="password"
+            value={formState.password}
+            onChange={inputChange}
+          />
+          {errorState.password.length > 0 ? (
+            <p className="error">{errorState.password}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <Label htmlFor="location">Enter your current address</Label>
+        <div className="form-group">
+          <Input
+            type="text"
+            name="location"
+            value={formState.location}
+            onChange={inputChange}
+          />
+          {errorState.location.length > 0 ? (
+            <p className="error">{errorState.location}</p>
+          ) : null}
+        </div>
+      </Container>
+      <Container>
+        <div className="form-group">
+          {/* <Label htmlFor="terms">Terms & Conditions</Label>
                 <Input
                     type="checkbox"
                     name="terms"
                     value={formState.terms}
                     onChange={inputChange}
                 /> */}
-                {errorState.terms.length > 0 ? (<p className="error">{errorState.terms}</p>) : null}
-                <br />
-                {/* <Button type="submit" disabled={buttonDisabled} >Submit</Button> */}
-                <Button type="submit" >Submit</Button>
-            </div>
-            </Container>
-        </Form>
-    )
+          {errorState.terms.length > 0 ? (
+            <p className="error">{errorState.terms}</p>
+          ) : null}
+          <br />
+          {/* <Button type="submit" disabled={buttonDisabled} >Submit</Button> */}
+          <Button type="submit">Submit</Button>
+        </div>
+      </Container>
+    </Form>
+  );
 }
