@@ -28,15 +28,8 @@ export const getTest = (response)  => {
 }
 
 export const getTrucks = (getthattruck) => {
-<<<<<<< HEAD
     const truckrequest =  axiosWithAuth()
     .get('https://food-truck-back-end.herokuapp.com/operators/6/trucks',getthattruck)
-=======
-  const truckrequest = axiosWithAuth().get(
-    "https://food-truck-back-end.herokuapp.com/operators/1/trucks",
-    getthattruck
-  );
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
 
   return (dispatch) => {
     dispatch({
@@ -60,7 +53,6 @@ export const getTrucks = (getthattruck) => {
 };
 
 export const addTruck = (id, truck) => {
-<<<<<<< HEAD
     const request =  axiosWithAuth()
     .post(`operators/${id}/trucks`, truck)
     // console.log(response.header)
@@ -91,23 +83,6 @@ export const addTruck = (id, truck) => {
     return (dispatch) => {
       dispatch({
         type: DELETING_TRUCK
-=======
-  const request = axiosWithAuth().post(
-    `https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`,
-    truck
-  );
-
-  return (dispatch) => {
-    dispatch({
-      type: ADDING_TRUCK,
-    });
-    request
-      .then((response) => {
-        dispatch({
-          type: ADDED,
-          payload: response.data,
-        });
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
       })
       .catch((error) => {
         dispatch({
@@ -118,17 +93,10 @@ export const addTruck = (id, truck) => {
   };
 };
 
-<<<<<<< HEAD
 export const favTruck = (truck) => {
   const request =  axiosWithAuth()
   //this route doesnt exist yet but somethinbg like this?
   .post(`diners/favtrucks/`, truck)
-=======
-export const deleteTruck = (id) => {
-  const request = axiosWithAuth().delete(
-    `https://food-truck-back-end.herokuapp.com/operators/${id}`
-  );
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
 
   return (dispatch) => {
     dispatch({
@@ -150,17 +118,10 @@ export const deleteTruck = (id) => {
   };
 };
 
-<<<<<<< HEAD
 export const deleteFavedTruck = (id) => {
   const request =  axiosWithAuth()
   //route doesnt exist yet
   .delete(`diners/favtrucks/${id}`)
-=======
-export const favTruck = (truck) => {
-  const request = axiosWithAuth()
-    //this route doesnt exist yet but somethinbg like this?
-    .post(`https://food-truck-back-end.herokuapp.com/diners/favtrucks/`, truck);
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
 
   return (dispatch) => {
     dispatch({
@@ -203,15 +164,8 @@ export const favTruck = (truck) => {
 // }
 
 export const editTruck = (id, truck) => {
-<<<<<<< HEAD
   const request =  axiosWithAuth()
   .put(`operators/${id}/trucks`, truck)
-=======
-  const request = axiosWithAuth().put(
-    `https://food-truck-back-end.herokuapp.com/operators/${id}/trucks`,
-    truck
-  );
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
 
   return (dispatch) => {
     dispatch({

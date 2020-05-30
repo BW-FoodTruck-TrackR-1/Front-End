@@ -61,16 +61,8 @@ function LoginOperator(props) {
     e.preventDefault();
     //axiosWithAuth call
     axiosWithAuth()
-<<<<<<< HEAD
     //posting our register data to the register api
       .post(`operators/auth/login`, operator)
-=======
-      //posting our register data to the register api
-      .post(
-        `https://food-truck-back-end.herokuapp.com/operators/auth/login`,
-        operator
-      )
->>>>>>> ee5190e0972e23cd8c48dd5e315e0c07e43ee3af
       .then((res) => {
         //setting the token so were authorized to access content
         // localStorage.setItem('token', (res.data.payload))
