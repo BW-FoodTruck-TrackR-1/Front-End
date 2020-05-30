@@ -10,9 +10,6 @@
 // import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js'
 // // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
 
-
-
-
 // function TruckForm() {
 //   const history = useHistory()
 //   const {id} = useParams()
@@ -246,9 +243,7 @@
 //   TruckActions
 // )(TruckForm);
 
-
-
-// // smurf 
+// // smurf
 
 // // import React, { useState, Component } from "react";
 // // import axios from "axios";
@@ -437,6 +432,3 @@
 // //   addTruck,
 // //   deleteTruck,
 // // })(OperatorForm);
-
-
-

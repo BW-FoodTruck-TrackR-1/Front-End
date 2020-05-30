@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 import LoginDiner from "./LoginDiner";
 import LoginOperator from "./LoginOperator";
-import {Div, Container, H1, StyledLink, StyledLink2,} from "./Styles.js"
-
+import { Div, Container, H1, StyledLink, StyledLink2 } from "./Styles.js";
 
 function Login(props) {
   const [dinerState, setDinerState] = useState();
@@ -42,8 +41,12 @@ function Login(props) {
         </Container>
         <Container>
           <div>
-            <StyledLink to="/login/diner">Diner</StyledLink>
-            <StyledLink to="/login/operator">Operator</StyledLink>
+            <StyledLink id="StyledLink1" to="/login/diner">
+              Diner
+            </StyledLink>
+            <StyledLink id="StyledLink2" to="/login/operator">
+              Operator
+            </StyledLink>
           </div>
           <StyledLink2 to="/register">Sign Up</StyledLink2>
         </Container>

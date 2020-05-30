@@ -6,11 +6,11 @@ import styled from "styled-components";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import AddTruck from "./components/AddTruck";
-import Operator from './components/Operator'
-import Diner from './components/Diner'
-import OperatorDashboard from './components/OperatorDashboard'
-import DinerDashboard from './components/DinerDashboard'
-import TruckCard from './components/TruckCard'
+import Operator from "./components/Operator";
+import Diner from "./components/Diner";
+import OperatorDashboard from "./components/OperatorDashboard";
+import DinerDashboard from "./components/DinerDashboard";
+import TruckCard from "./components/TruckCard";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -41,24 +41,21 @@ const Container = styled.div`
 `;
 
 function App() {
-  
-
   return (
     <div className="App">
-          <StyledLink to="/dinerreg"> Diner registration</StyledLink>
-    
-    <StyledLink to="/operatorreg">Operator registration</StyledLink>
-    <StyledLink to="/login">Login</StyledLink>
-    <Route path="/dinerreg">
-        <Diner 
-            // formSubmit={dinerSubmit} 
-            />
-    </Route>
-   <Route exact path="/operatorreg">
-        <Operator 
-            // formSubmit={operatorSubmit} 
-             />
-    </Route>
+      <StyledLink to="/dinerreg"> Diner registration</StyledLink>
+      <StyledLink to="/operatorreg">Operator registration</StyledLink>
+      <StyledLink to="/login">Login</StyledLink>
+      <Route path="/dinerreg">
+        <Diner
+        // formSubmit={dinerSubmit}
+        />
+      </Route>
+      <Route exact path="/operatorreg">
+        <Operator
+        // formSubmit={operatorSubmit}
+        />
+      </Route>
       <Route path="/register">
         <Register />
       </Route>
@@ -74,8 +71,7 @@ function App() {
       <Route path="/diner-dashboard">
         <DinerDashboard />
       </Route>
-      <TruckCard />
-
+      {/*<TruckCard />*/}
     </div>
   );
 }
