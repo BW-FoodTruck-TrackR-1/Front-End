@@ -72,7 +72,7 @@
 // //   margin: 10px;
 // // `;
 
-// // // const initialState = 
+// // // const initialState =
 // // // {
 // // //     cuisineType: "",
 // // //     customerRating: [],
@@ -126,37 +126,30 @@
 // //   const [customerRatingAvgToEdit,setcustomerRatingAvgToEdit]=useState(customerRatingAvg);
 // //   const [itemNameToEdit,setitemNameToEdit]=useState(itemName);
 
-
 // //   const [imageOfTruckToEdit,setimageOfTruckToEdit]=useState(imageOfTruck);
 
-
-
-  
 // //   const editcuisineType = (cuisineType) => {
 // //     setEdit(true);
 // //     setcuisineTypeToEdit(cuisineType);
 // //   };
 
-
-  
 // //   const editimageOfTruck = (imageOfTruck) => {
 // //     setEdit(true);
 // //     setimageOfTruckToEdit(imageOfTruck);
 // //   };
-  
+
 // //   const edititemName = (itemName) => {
 // //     setEdit(true);
 // //     setitemNameToEdit(itemName);
 // //   };
 
 // //   const { editTruck } = props
-  
+
 // //   // onChange={(e) =>
 // //   //   setColorToEdit({ ...colorToEdit, color: e.target.value })
 // //   // }
 // //   // value={colorToEdit.color}
 
-  
 // //   const changeHandler = (e) => {
 // //     e.persist();
 // //     e.preventDefault();
@@ -235,7 +228,6 @@
 // //   }
 // //   value={imageOfTruckToEdit.imageOfTruck}
 
-
 // //           />
 // //         </div>
 // //       </Container>
@@ -273,9 +265,7 @@
 // //     setitemNameToEdit({ ...itemNameToEdit, itemName: e.target.value })
 // //   }
 // //   value={itemNameToEdit.itemName}
-           
-          
-          
+
 // //           />
 // //         </div>
 // //       </Container>
@@ -309,8 +299,6 @@
 // //       </Container>
 // //       <Container>
 
-      
-
 // // {Truck.map((cuisineType)=>(
 // //   <button key={cuisineType.cuisineType} onClick={()=> editcuisineType(cuisineType)}   ></button>
 
@@ -323,7 +311,6 @@
 // //   <button key={itemName.itemName} onClick={()=> edititemName(itemName)}   ></button>
 
 // // ))}
-
 
 // //         {/* <Button> EDIT TRUCK</Button> */}
 // //       </Container>
@@ -352,9 +339,6 @@
 // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
 // import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js'
 // // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
-
-
-
 
 // function EditTruckForm() {
 //   const history = useHistory()
@@ -405,23 +389,16 @@
 //   const [customer_ratingToEdit,setcustomer_ratingToEdit]=useState(customer_rating);
 //   const [imageToEdit,setimageToEdit]=useState(image);
 
-
-
-
-
-  
 //   const editname = (name) => {
 //     setEdit(true);
 //     setnameToEdit(name);
 //   };
 
-
-  
 //   const editcuisine_type = (cuisine_type) => {
 //     setEdit(true);
 //     setcuisine_typeToEdit(cuisine_type);
 //   };
-  
+
 //   const editcustomer_rating = (customer_rating) => {
 //     setEdit(true);
 //     setcustomer_ratingToEdit(customer_rating);
@@ -431,8 +408,6 @@
 //     setEdit(true);
 //     setimageToEdit(image);
 //   };
-
-
 
 //   const changeHandler = (e) => {
 //     e.persist();
@@ -462,7 +437,6 @@
 //       file: URL.createObjectURL(e.target.files[0]),
 //     });
 //   };
-
 
 //   const handleSubmit = (e) => {
 //      e.preventDefault()
@@ -534,7 +508,7 @@
 //           />
 //         </div>
 //       </Container>
-      
+
 //       <Container>
 //         <Button>Create new Truck</Button>
 //       </Container>
@@ -557,11 +531,11 @@ import axios from "axios";
 import styled from "styled-components";
 import { Route, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {connect} from 'react-redux';
-import Truck from './Truck'
-import TruckCard from './TruckCard'
+import { connect } from "react-redux";
+import Truck from "./Truck";
+import TruckCard from "./TruckCard";
 // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
-import * as TruckActions from '../actions/TruckActions'
+import * as TruckActions from "../actions/TruckActions";
 const H1 = styled.h1`
   font-size: 2rem;
   color: #ffc23b;
@@ -626,7 +600,7 @@ const StyledLink = styled(Link)`
   margin: 10px;
 `;
 
-// const initialState = 
+// const initialState =
 // {
 //     cuisineType: "",
 //     customerRating: [],
@@ -645,7 +619,7 @@ const StyledLink = styled(Link)`
 //   }
 
 function EditTruckForm(props) {
-  const { editTruck } = props
+  const { editTruck } = props;
   const [truckState, setTruckState] = useState({
     cuisineType: "",
     customerRating: [],
@@ -674,43 +648,40 @@ function EditTruckForm(props) {
   ]);
 
   // edit area
-  const [edit,setEdit ]  = useState(false)
-  const [cuisineTypeToEdit,setcuisineTypeToEdit]=useState(cuisineType);
-  const [customerRatingToEdit,setcustomerRatingToEdit]=useState(customerRating);
-  const [customerRatingAvgToEdit,setcustomerRatingAvgToEdit]=useState(customerRatingAvg);
-  const [itemNameToEdit,setitemNameToEdit]=useState(itemName);
+  const [edit, setEdit] = useState(false);
+  const [cuisineTypeToEdit, setcuisineTypeToEdit] = useState(cuisineType);
+  const [customerRatingToEdit, setcustomerRatingToEdit] = useState(
+    customerRating
+  );
+  const [customerRatingAvgToEdit, setcustomerRatingAvgToEdit] = useState(
+    customerRatingAvg
+  );
+  const [itemNameToEdit, setitemNameToEdit] = useState(itemName);
 
+  const [imageOfTruckToEdit, setimageOfTruckToEdit] = useState(imageOfTruck);
 
-  const [imageOfTruckToEdit,setimageOfTruckToEdit]=useState(imageOfTruck);
-
-
-
-  
   const editcuisineType = (cuisineType) => {
     setEdit(true);
     setcuisineTypeToEdit(cuisineType);
   };
 
-
-  
   const editimageOfTruck = (imageOfTruck) => {
     setEdit(true);
     setimageOfTruckToEdit(imageOfTruck);
   };
-  
+
   const edititemName = (itemName) => {
     setEdit(true);
     setitemNameToEdit(itemName);
   };
 
-  const { editTruck } = props
-  
+  const { editTruck } = props;
+
   // onChange={(e) =>
   //   setColorToEdit({ ...colorToEdit, color: e.target.value })
   // }
   // value={colorToEdit.color}
 
-  
   const changeHandler = (e) => {
     e.persist();
     e.preventDefault();
@@ -739,7 +710,7 @@ function EditTruckForm(props) {
   };
   const formSubmit = (e) => {
     e.preventDefault();
-    editTruck(id, truckState)
+    editTruck(id, truckState);
   };
   return (
     <Form autoComplete="off" onSubmit={formSubmit}>
@@ -762,13 +733,14 @@ function EditTruckForm(props) {
             placeholder="Cuisine type"
             value={truckState.cuisineType}
             onChange={changeHandler}
-
-  ///////////
-  onChange={(e) =>
-    setcuisineTypeToEdit({ ...cuisineTypeToEdit, cuisineType: e.target.value })
-  }
-  value={cuisineTypeToEdit.cuisineType}
-
+            ///////////
+            onChange={(e) =>
+              setcuisineTypeToEdit({
+                ...cuisineTypeToEdit,
+                cuisineType: e.target.value,
+              })
+            }
+            value={cuisineTypeToEdit.cuisineType}
           />
         </div>
       </Container>
@@ -782,14 +754,14 @@ function EditTruckForm(props) {
             value={truckState.imageOfTruck}
             onChange={handleImage}
             multiple
-
-  ///////////
-  onChange={(e) =>
-    setimageOfTruckToEdit({ ...imageOfTruckToEdit, imageOfTruck: e.target.value })
-  }
-  value={imageOfTruckToEdit.imageOfTruck}
-
-
+            ///////////
+            onChange={(e) =>
+              setimageOfTruckToEdit({
+                ...imageOfTruckToEdit,
+                imageOfTruck: e.target.value,
+              })
+            }
+            value={imageOfTruckToEdit.imageOfTruck}
           />
         </div>
       </Container>
@@ -821,15 +793,11 @@ function EditTruckForm(props) {
             placeholder="Item Name"
             value={menu.itemName}
             onChange={changeHandlerMenu}
-
-              ///////////
-  onChange={(e) =>
-    setitemNameToEdit({ ...itemNameToEdit, itemName: e.target.value })
-  }
-  value={itemNameToEdit.itemName}
-           
-          
-          
+            ///////////
+            onChange={(e) =>
+              setitemNameToEdit({ ...itemNameToEdit, itemName: e.target.value })
+            }
+            value={itemNameToEdit.itemName}
           />
         </div>
       </Container>
@@ -862,32 +830,28 @@ function EditTruckForm(props) {
         </div>
       </Container>
       <Container>
-
-      
-
-{Truck.map((cuisineType)=>(
-  <button key={cuisineType.cuisineType} onClick={()=> editcuisineType(cuisineType)}   ></button>
-
-))}
-{Truck.map((imageOfTruck)=>(
-  <button key={imageOfTruck.imageOfTruck} onClick={()=> editimageOfTruck(imageOfTruck)}   ></button>
-
-))}
-{Truck.map((itemName)=>(
-  <button key={itemName.itemName} onClick={()=> edititemName(itemName)}   ></button>
-
-))}
-
+        {Truck.map((cuisineType) => (
+          <button
+            key={cuisineType.cuisineType}
+            onClick={() => editcuisineType(cuisineType)}
+          ></button>
+        ))}
+        {Truck.map((imageOfTruck) => (
+          <button
+            key={imageOfTruck.imageOfTruck}
+            onClick={() => editimageOfTruck(imageOfTruck)}
+          ></button>
+        ))}
+        {Truck.map((itemName) => (
+          <button
+            key={itemName.itemName}
+            onClick={() => edititemName(itemName)}
+          ></button>
+        ))}
 
         {/* <Button> EDIT TRUCK</Button> */}
       </Container>
     </Form>
   );
 }
-export default connect(
-  state => state,
-  TruckActions
-)(EditTruckForm);
-
-
-
+export default connect((state) => state, TruckActions)(EditTruckForm);
