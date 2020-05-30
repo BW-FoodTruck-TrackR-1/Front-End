@@ -22,98 +22,93 @@ const formSchema = yup.object().shape({
   favoritetrucks: yup.array(),
 });
 export default function Diner(props) {
-  const history = useHistory();
-  const [formState, setFormTate] = useState({
-    // name: "",
-    username: "",
-    password: "",
-    // email: "",
-    location: "",
-    // favoritetrucks: [],
-    // terms: false
-  });
-  const [errorState, setErrorState] = useState({
-    name: "",
-    username: "",
-    password: "",
-    email: "",
-    location: "",
-    terms: "",
-    favoritetrucks: [],
-  });
-  const [buttonDisabled, setButtonDisabled] = useState(true);
-  useEffect(() => {
-    formSchema
-      .isValid(formState)
-      .then((valid) => {
-        setButtonDisabled(!valid);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  }, [formState]);
-  const validate = (e) => {
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    yup
-      .reach(formSchema, e.target.name)
-      .validate(value)
-      .then((valid) => {
-        setErrorState({
-          ...errorState,
-          [e.target.name]: "",
-        });
-      })
-      .catch((err) => {
-        console.log(err.errors);
-        setErrorState({
-          ...errorState,
-          [e.target.name]: err.errors[0],
-        });
-      });
-  };
-  const inputChange = (e) => {
-    e.persist();
-    console.log("Input changed!", e.target.value, e.target.checked);
-    validate(e);
-    let value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setFormTate({ ...formState, [e.target.name]: value });
-    console.log(e.target.checked, "we hit the checkbox");
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //axiosWithAuth call
-    axiosWithAuth()
-      //posting our register data to the register api
-      .post(
-        `https://food-truck-back-end.herokuapp.com/diners/auth/register`,
-        formState
-      )
-      .then((res) => {
-        //setting the token so were authorized to access content
-        // localStorage.setItem('token', (res.data.payload))
-        //sets the form blank again
-        setFormTate({
-          // name:"",
-          username: "",
-          password: "",
-          // email:"",
-          // terms: false,
-          location: "",
-        });
-        console.log(res.data);
-        //pushes us to the /operatorDashboard
-        history.push("/diner-dashboard");
-      })
-      .catch((err) => console.log(err));
-  };
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Container>
-        <H2>Diners registration</H2>
-      </Container>
-      {/* <Container>
+    const history = useHistory()
+    const [formState, setFormTate] = useState({
+        // name: "",
+        username: "",
+        password: "",
+        // email: "",
+        location: "",
+        // favoritetrucks: [],
+        // terms: false
+    })
+    const [errorState, setErrorState] = useState({
+        name: "",
+        username: "",
+        password: "",
+        email: "",
+        location: "",
+        terms: "",
+        favoritetrucks: []
+    })
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            setButtonDisabled(!valid);
+        }).catch(err => {
+            console.log('err', err)
+        })
+    }, [formState]);
+    const validate = (e) => {
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
+        yup
+            .reach(formSchema, e.target.name)
+            .validate(value)
+            .then(valid => {
+                setErrorState({
+                    ...errorState,
+                    [e.target.name]: ""
+                });
+            })
+            .catch(err => {
+                console.log(err.errors)
+                setErrorState({
+                    ...errorState,
+                    [e.target.name]: err.errors[0]
+                })
+            })
+    }
+    const inputChange = e => {
+        e.persist()
+        console.log("Input changed!", e.target.value, e.target.checked);
+        validate(e);
+        let value = e.target.type === "checkbox" ? e.target.checked : e.target.value
+        setFormTate({ ...formState, [e.target.name]: value });
+        console.log(e.target.checked, 'we hit the checkbox')
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        //axiosWithAuth call
+        axiosWithAuth()
+        //posting our register data to the register api
+          .post(`diners/auth/register`, formState)
+          .then((res) => {
+            //setting the token so were authorized to access content
+            localStorage.setItem('token', (res.data.payload))
+            //sets the form blank again
+            setFormTate({
+                // name:"",
+                username:"",
+                password:"",
+                // email:"",
+                // terms: false,
+                location:''
+            })
+            console.log(res.data)
+            //pushes us to the /operatorDashboard
+            history.push('/diner-dashboard')
+    
+          })
+          .catch(err => console.log(err)) 
+    
+    
+      }
+    return (
+        <Form onSubmit={handleSubmit}>
+            <Container>
+            <H2>Diners registration</H2>
+            </Container>
+            {/* <Container>
             <Label htmlFor="name">Full Name </Label>
             <div className="form-group">
                 <Input

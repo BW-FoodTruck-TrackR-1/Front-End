@@ -62,12 +62,12 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route exact path="/truck">
+      <PrivateRoute exact path="/truck">
         <AddTruck />
-      </Route>
-      <Route path="/operator-dashboard">
+      </PrivateRoute>
+      <PrivateRoute path="/operator-dashboard">
         <OperatorDashboard />
-      </Route>
+      </PrivateRoute>
       <Route path="/diner-dashboard">
         <DinerDashboard />
       </Route>

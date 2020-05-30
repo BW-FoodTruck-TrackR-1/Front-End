@@ -1,17 +1,17 @@
 import React from "react";
 import OperatorTrucks from './OperatorTrucks'
-import TruckForm from './TruckForm'
+import AddTruck from './AddTruck'
+import {StyledLink} from './Styles'
 
 
 export default function OperatorDashboard(){
 
 return (
     <div>
-
+        <StyledLink to="/truck">Add Truck</StyledLink>
         hi. this is the dashboard for operators
         <div>
-            {/* <OperatorTrucks />
-            <TruckForm /> */}
+
 
         </div>
     </div>
