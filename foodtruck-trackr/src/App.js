@@ -71,7 +71,7 @@ function App() {
       <Route path="/diner-dashboard">
         <DinerDashboard />
       </Route>
-      <TruckCard />
+      {/*<TruckCard />*/}
     </div>
   );
 }
