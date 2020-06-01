@@ -13,9 +13,10 @@ import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js
 
 
 
-function AddTruck() {
+function AddTruck(props) {
   const history = useHistory()
-  const id = useParams()
+  // const id = useParams()
+  const params = useParams()
 
   // const [truckState, setTruckState] = useState({
   //   cuisineType: "",
@@ -93,17 +94,22 @@ function AddTruck() {
     });
   };
 
-  // const formSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Form Submitted!");
+  // const handleSubmit = (e) => {
+  //    e.preventDefault()
+  //   // const truckID = id.id
+  //   TruckActions.addTruck(7, truckState)
+  //   console.log(truckState)
+  // }
 
-  //   axios.post("https://reqres.in/api/users", truckState);
-  // };
+
+
   const handleSubmit = (e) => {
-     e.preventDefault()
-    // const truckID = id.id
-    TruckActions.addTruck(6, truckState)
+    const idCallback = localStorage.getItem('id')
+    const id = `${idCallback}`
+    e.preventDefault()
+    TruckActions.addTruck(12, truckState)
   }
+
 
   return (
 
@@ -157,7 +163,7 @@ function AddTruck() {
             value={truckState.customer_rating}
             onChange={changeHandler}
           />
-          <button onClick={TruckActions.getTest}>test</button>
+          {/* <button onClick={TruckActions.getTest}>test</button> */}
         </div>
       </Container>
       {/* <Container>

@@ -24,6 +24,9 @@ const initialStateOperator = {
   allOtherTrucks: [],
   fetched: false,
   error: null,
+  name:'',
+  cuisine_type:'',
+  customer_rating:''
 };
 const initialStateDiner = {
   isfetchingDiner: false,
@@ -85,6 +88,7 @@ export const OperatorReducer = (
         // allOtherTrucks: action.payload,
         name: action.payload,
         cuisine_type: action.payload,
+        customer_rating: action.payload
       };
     case ADDED:
       return {
@@ -95,6 +99,7 @@ export const OperatorReducer = (
         // allOtherTrucks: action.payload
         name: action.payload,
         cuisine_type: action.payload,
+        customer_rating: action.payload
       };
     case ERR:
       return {

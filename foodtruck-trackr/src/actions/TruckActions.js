@@ -21,6 +21,8 @@ export const FAV_TRUCK_FAIL = "FAV_TRUCK_FAIL";
 export const EDITING_TRUCK = "EDITING_TRUCK";
 export const EDITING_TRUCK_SUCCESS = "EDITING_TRUCK_SUCCESS";
 
+
+
 export const getTest = (response)  => {
   const truckrequest = axiosWithAuth()
   truckrequest.get(`https://food-truck-back-end.herokuapp.com/operators/6/trucks`)
@@ -66,8 +68,9 @@ export const addTruck = (id, truck) => {
           type: ADDED,
           payload: response.data
         })
-
-      }).catch(error => {
+        console.log(response.data)
+      })
+      .catch(error => {
         dispatch({
           type: ERR,
           payload: error.message
@@ -75,6 +78,7 @@ export const addTruck = (id, truck) => {
       })
     }
   }
+
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
