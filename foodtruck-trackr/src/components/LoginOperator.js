@@ -20,7 +20,6 @@ function LoginOperator(props) {
   const [operator, setOperator] = useState({
     username: "",
     password: "",
-    id: ''
     // operator: false,
   });
 
@@ -66,7 +65,7 @@ function LoginOperator(props) {
       .post(`operators/auth/login`, operator)
       .then((res) => {
         //setting the token so were authorized to access content
-        localStorage.setItem('token', JSON.stringify(res.data.payload))
+        localStorage.setItem('token', (res.data.payload))
         localStorage.setItem('id', JSON.stringify(operator.id))
         //sets the form blank again
         setOperator({

@@ -31,7 +31,7 @@ export const getTest = (response)  => {
 
 export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
-    .get('https://food-truck-back-end.herokuapp.com/operators/6/trucks',getthattruck)
+    .get('https://food-truck-back-end.herokuapp.com/operators/11/trucks')
 
   return (dispatch) => {
     dispatch({
@@ -63,7 +63,7 @@ export const addTruck = (id, truck) => {
         type: ADDING_TRUCK
       })
       request.then(response => {
-        localStorage.setItem('token', (response.data.payload))
+        // localStorage.setItem('token', (response.data.payload))
         dispatch({
           type: ADDED,
           payload: response.data

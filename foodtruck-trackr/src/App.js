@@ -7,19 +7,30 @@ import Login from "./components/Login";
 import AddTruck from "./components/AddTruck";
 import Operator from "./components/Operator";
 import Diner from "./components/Diner";
+import TruckCard from './components/TruckCard'
 import OperatorDashboard from "./components/OperatorDashboard";
 import DinerDashboard from "./components/DinerDashboard";
 import { StyledLinkHome as StyledLink } from './components/Styles'
 import {useHistory} from 'react-router-dom'
+import * as TruckActions from './actions/TruckActions'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state) => {
+  return {
+    trucks: state.trucks,
+    truckid: state.truckid
+  };
+};
 
 
-
-function App() {
+function App(props) {
   const history = useHistory()
   const logOut = () => {
     localStorage.removeItem('token')
     history.push('/')
   }
+
+
   return (
     <div className="App">
       <StyledLink onClick={logOut}>Logout</StyledLink>
@@ -41,8 +52,11 @@ function App() {
       <PrivateRoute exact path="/truck" component={AddTruck} />
       <PrivateRoute exact path="/operator-dashboard" component={OperatorDashboard} />
       <PrivateRoute exact path='diner-dashboard' component={DinerDashboard} />
+      <PrivateRoute exact path='/truck-list' component={TruckCard} trucks={props.trucks} />
     </div>
   );
 }
 
-export default App;
+export default connect (
+  (mapStateToProps), TruckActions
+)(App)

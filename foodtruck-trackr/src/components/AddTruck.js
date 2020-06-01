@@ -17,6 +17,7 @@ function AddTruck(props) {
   const history = useHistory()
   // const id = useParams()
   const params = useParams()
+  const id = useParams()
 
   // const [truckState, setTruckState] = useState({
   //   cuisineType: "",
@@ -38,6 +39,7 @@ function AddTruck(props) {
     customer_rating: '',
     cuisine_type: "",
     name: '',
+    // operator_id:``
     // image: '',
     // menu: [
     //   {
@@ -94,20 +96,14 @@ function AddTruck(props) {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //    e.preventDefault()
-  //   // const truckID = id.id
-  //   TruckActions.addTruck(7, truckState)
-  //   console.log(truckState)
-  // }
-
-
-
+const addTruck = (id, truck) => {
+  axiosWithAuth()
+  .post(`operators/${id}/trucks`, truck)
+  .then(res => {console.log (res.data)})
+}
   const handleSubmit = (e) => {
-    const idCallback = localStorage.getItem('id')
-    const id = `${idCallback}`
     e.preventDefault()
-    TruckActions.addTruck(12, truckState)
+    addTruck(16, truckState)
   }
 
 

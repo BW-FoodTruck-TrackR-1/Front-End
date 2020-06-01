@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
-//we can call the reducer whatever but I haven't built it yet
 import reducer from './reducers/index.js';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from "react-router-dom";
