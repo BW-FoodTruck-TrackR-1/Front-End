@@ -24,6 +24,10 @@ const initialStateOperator = {
   allOtherTrucks: [],
   fetched: false,
   error: null,
+  name:'',
+  cuisine_type:'',
+  customer_rating:'',
+  trucks:[{}]
 };
 const initialStateDiner = {
   isfetchingDiner: false,
@@ -67,8 +71,9 @@ export const OperatorReducer = (
       return {
         ...state,
         isfetchingOperator: false,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
+        // trucksOwned: action.payload,
+        // allOtherTrucks: action.payload,
+        trucks: action.payload
       };
     case FETCHING_TRUCKS_FAIL:
       return {
@@ -85,6 +90,7 @@ export const OperatorReducer = (
         // allOtherTrucks: action.payload,
         name: action.payload,
         cuisine_type: action.payload,
+        customer_rating: action.payload
       };
     case ADDED:
       return {
@@ -95,6 +101,7 @@ export const OperatorReducer = (
         // allOtherTrucks: action.payload
         name: action.payload,
         cuisine_type: action.payload,
+        customer_rating: action.payload
       };
     case ERR:
       return {
@@ -160,63 +167,63 @@ export const DinerReducer = (state = initialStateDiner, action) => {
     //
 
     // Diner fetch
-    case FETCHING_TRUCKS:
-      return {
-        ...state,
-        isfetchingDiner: true,
-      };
-    case FETCHING_TRUCKS_SUCCESS:
-      return {
-        ...state,
-        isfetchingDiner: false,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
-      };
-    case FETCHING_TRUCKS_FAIL:
-      return {
-        ...state,
-        isfetchingDiner: false,
-        error: "tHeRe wAs An ErRoR",
-      };
-      case FAVING_TRUCK:
-        return {
-          ...state,
-          isfetchingDiner: true,
-          faved:false
-        };
-      case FAV_TRUCK_SUCCESS:
-        return {
-          ...state,
-          isfetchingDiner: false,
-          faved:true,
-          allOtherTrucks: action.payload,
-          favoriteTrucks: action.payload
-        };
-      case FAV_TRUCK_FAIL:
-        return {
-          ...state,
-          isfetchingDiner: false,
-          error: "tHeRe wAs An ErRoR",
-        };
-        case DELETING_FAVED_TRUCK:
-      return {
-        ...state,
-        isfetchingDiner: true,
-        fetched: true,
-        faved:false,
-        favoriteTrucks:action.payload,
-        allOtherTrucks: action.payload,
-      };
+  //   case FETCHING_TRUCKS:
+  //     return {
+  //       ...state,
+  //       isfetchingDiner: true,
+  //     };
+  //   case FETCHING_TRUCKS_SUCCESS:
+  //     return {
+  //       ...state,
+  //       isfetchingDiner: false,
+  //       trucksOwned: action.payload,
+  //       allOtherTrucks: action.payload,
+  //     };
+  //   case FETCHING_TRUCKS_FAIL:
+  //     return {
+  //       ...state,
+  //       isfetchingDiner: false,
+  //       error: "tHeRe wAs An ErRoR",
+  //     };
+  //     case FAVING_TRUCK:
+  //       return {
+  //         ...state,
+  //         isfetchingDiner: true,
+  //         faved:false
+  //       };
+  //     case FAV_TRUCK_SUCCESS:
+  //       return {
+  //         ...state,
+  //         isfetchingDiner: false,
+  //         faved:true,
+  //         allOtherTrucks: action.payload,
+  //         favoriteTrucks: action.payload
+  //       };
+  //     case FAV_TRUCK_FAIL:
+  //       return {
+  //         ...state,
+  //         isfetchingDiner: false,
+  //         error: "tHeRe wAs An ErRoR",
+  //       };
+  //       case DELETING_FAVED_TRUCK:
+  //     return {
+  //       ...state,
+  //       isfetchingDiner: true,
+  //       fetched: true,
+  //       faved:false,
+  //       favoriteTrucks:action.payload,
+  //       allOtherTrucks: action.payload,
+  //     };
      
-        case DELETED_FAVED_TRUCK_SUCCESS:
-          return {
-            ...state,
-            isfetchingDiner: false,
-            fetched: true,
-            faved:true,
-            favoriteTrucks:action.payload,
-            allOtherTrucks: action.payload,
-          };
+  //       case DELETED_FAVED_TRUCK_SUCCESS:
+  //         return {
+  //           ...state,
+  //           isfetchingDiner: false,
+  //           fetched: true,
+  //           faved:true,
+  //           favoriteTrucks:action.payload,
+  //           allOtherTrucks: action.payload,
+  //         };
     default:
       return state;
   }

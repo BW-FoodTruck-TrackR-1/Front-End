@@ -58,6 +58,25 @@ export const StyledLink2 = styled(Link)`
   bottom: 100px;
 `;
 
+export const StyledLinkHome = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    background-color: #c23b21;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 40px;
+  }
+`;
+
 export const Form = styled.form`
 margin: auto;
 margin-top: 125px;
