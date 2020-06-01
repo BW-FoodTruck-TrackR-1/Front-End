@@ -14,6 +14,7 @@ import { StyledLinkHome as StyledLink } from './components/Styles'
 import {useHistory} from 'react-router-dom'
 import * as TruckActions from './actions/TruckActions'
 import { connect } from 'react-redux'
+import Home from './components/Home'
 
 const mapStateToProps = (state) => {
   return {
@@ -48,6 +49,9 @@ function App(props) {
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route exact path='/'>
+        <Home />
       </Route>
       <PrivateRoute exact path="/truck" component={AddTruck} />
       <PrivateRoute exact path="/operator-dashboard" component={OperatorDashboard} />
