@@ -57,6 +57,7 @@ function App(props) {
       <PrivateRoute exact path="/operator-dashboard" component={OperatorDashboard} />
       <PrivateRoute exact path='diner-dashboard' component={DinerDashboard} />
       <PrivateRoute exact path='/truck-list' component={TruckCard} trucks={props.trucks} />
+
     </div>
   );
 }

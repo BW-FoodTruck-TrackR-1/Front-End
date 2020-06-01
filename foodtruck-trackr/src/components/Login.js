@@ -9,6 +9,9 @@ function Login(props) {
   const [dinerState, setDinerState] = useState();
   const [operatorState, setOperatorState] = useState();
 
+
+  
+
   const dinerSubmit = (e) => {
     e.preventDefault();
     console.log("form submitted");

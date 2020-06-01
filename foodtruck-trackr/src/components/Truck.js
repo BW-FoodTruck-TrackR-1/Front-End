@@ -1,10 +1,13 @@
+
 import React, { useState, useEffect } from "react";
 import * as TruckActions from '../actions/TruckActions'
 import { connect } from 'react-redux'
 
 
 
+
 const Truck = (props) => {
+
 
   const [truck, setTruck] = useState({})
 
