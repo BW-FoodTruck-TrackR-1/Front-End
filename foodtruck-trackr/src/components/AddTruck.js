@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
 import {connect} from 'react-redux';
 import * as TruckActions from '../actions/TruckActions';
-import {axiosWithAuth} from '../utils/AxiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
-import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
 import {H1, H2, Form, Container, SubDiv, Button, Input, Label} from './Styles.js'
 // import addTruck, { ADDED, DELETED } from '../actions/TruckActions';
 
@@ -19,22 +14,6 @@ function AddTruck(props) {
   const params = useParams()
   const id = useParams()
 
-  // const [truckState, setTruckState] = useState({
-  //   cuisineType: "",
-  //   customerRating: [],
-  //   customerRatingAvg: [],
-  //   imageOfTruck: [],
-  //   menu: [
-  //     {
-  //       itemName: "",
-  //       itemDescription: "",
-  //       itemPhoto: [],
-  //       itemPrice: "",
-  //       customerRating: [],
-  //       customerRatingAvg: [],
-  //     },
-  //   ],
-  // });
   const [truckState, setTruckState] = useState({
     customer_rating: '',
     cuisine_type: "",
@@ -99,6 +78,7 @@ function AddTruck(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.addTruck(truckState)
+    window.location.reload()
   }
 
 
