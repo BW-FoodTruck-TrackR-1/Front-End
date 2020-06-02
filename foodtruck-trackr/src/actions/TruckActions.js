@@ -82,7 +82,7 @@ export const addTruck = (id, truck) => {
   
   export const deleteTruck = (id) => {
     const request =  axiosWithAuth()
-    .delete(`operators/${id}`)
+    .delete(`https://food-truck-back-end.herokuapp.com/operators/6/trucks/${id}`)
   
     return (dispatch) => {
       dispatch({
