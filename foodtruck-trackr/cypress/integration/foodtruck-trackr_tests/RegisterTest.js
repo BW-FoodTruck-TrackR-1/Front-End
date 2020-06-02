@@ -1,33 +1,28 @@
-describe("Testing Login.js", () => {
+describe("Tests Register.js", () => {
   beforeEach(() => {
     cy.visit("baseUrl");
   });
-  it("Checks that LoginDiner.js form inputs are working correctly", () => {
+  it("Checks that Diner.js is working correctly", () => {
     cy.pause();
-    cy.get('[href="/login"]').click();
-    cy.get('[href="/login/diner"]').click();
+    cy.get('[href="/dinerreg"]').click();
     cy.get("input[name=username]")
       .type("testUserDiner")
       .should("have.value", "testUserDiner");
-
     cy.get("input[name=password]")
-      .type("testPassDiner")
-      .should("have.value", "testPassDiner");
-
+      .type("testPassDiner1!")
+      .should("have.value", "testPassDiner1!");
+    cy.get("input[name=location]").type("USA").should("have.value", "USA");
     cy.get("form").submit();
   });
-  it("Checks that LoginOperator.js form inputs are working correctly", () => {
+  it("Checks that Operator.js is working correctly", () => {
     cy.pause();
-    cy.get('[href="/login"]').click();
-    cy.get('[href="/login/operator"]').click();
+    cy.get('[href="/operatorreg"]').click();
     cy.get("input[name=username]")
       .type("testUserOperator")
       .should("have.value", "testUserOperator");
-
     cy.get("input[name=password]")
       .type("testPassOperator1!")
       .should("have.value", "testPassOperator1!");
-
     cy.get("form").submit();
   });
 });

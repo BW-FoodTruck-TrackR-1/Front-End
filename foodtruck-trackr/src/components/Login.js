@@ -44,12 +44,8 @@ function Login(props) {
         </Container>
         <Container>
           <div>
-            <StyledLink id="StyledLink1" to="/login/diner">
-              Diner
-            </StyledLink>
-            <StyledLink id="StyledLink2" to="/login/operator">
-              Operator
-            </StyledLink>
+            <StyledLink to="/login/diner">Diner</StyledLink>
+            <StyledLink to="/login/operator">Operator</StyledLink>
           </div>
           <StyledLink2 to="/register">Sign Up</StyledLink2>
         </Container>
