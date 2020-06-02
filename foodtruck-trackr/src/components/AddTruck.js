@@ -96,14 +96,9 @@ function AddTruck(props) {
     });
   };
 
-const addTruck = (truck) => {
-  axiosWithAuth()
-  .post(`http://localhost:3333/trucks`, truck)
-  .then(res => {console.log (res.data)})
-}
   const handleSubmit = (e) => {
     e.preventDefault()
-    addTruck(truckState)
+    props.addTruck(truckState)
   }
 
 

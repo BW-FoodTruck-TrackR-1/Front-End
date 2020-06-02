@@ -62,11 +62,11 @@ function LoginOperator(props) {
     //axiosWithAuth call
     axiosWithAuth()
     //posting our register data to the register api
-      .post(`operators/auth/login`, operator)
+      .post(`https://food-truck-back-end.herokuapp.com/operators/auth/login`, operator)
       .then((res) => {
         //setting the token so were authorized to access content
         localStorage.setItem('token', (res.data.payload))
-        localStorage.setItem('id', JSON.stringify(operator.id))
+        // localStorage.setItem('id', JSON.stringify(operator.id))
         //sets the form blank again
         setOperator({
           // name:"",

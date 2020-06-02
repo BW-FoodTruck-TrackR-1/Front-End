@@ -81,7 +81,7 @@ const handleSubmit = (e) => {
     //axiosWithAuth call
     axiosWithAuth()
     //posting our register data to the register api
-      .post(`operators/auth/register`, formState)
+      .post(`https://food-truck-back-end.herokuapp.com/operators/auth/register`, formState)
       .then((res) => {
         //setting the token so were authorized to access content
         localStorage.setItem('token', (res.data.payload))
