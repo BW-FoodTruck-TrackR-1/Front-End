@@ -17,17 +17,8 @@ import {
 } from "../actions/TruckActions";
 
 const initialStateOperator = {
-  isfetchingOperator: false,
-  username: "",
-  password: "",
-  trucksOwned: [],
-  allOtherTrucks: [],
-  fetched: false,
-  error: null,
-  name:'',
-  cuisine_type:'',
-  customer_rating:'',
-  trucks:[{}]
+  isfetchingOperator:false,
+  truck:[{}],
 };
 const initialStateDiner = {
   isfetchingDiner: false,
@@ -73,7 +64,7 @@ export const OperatorReducer = (
         isfetchingOperator: false,
         // trucksOwned: action.payload,
         // allOtherTrucks: action.payload,
-        trucks: action.payload
+        truck: action.payload
       };
     case FETCHING_TRUCKS_FAIL:
       return {
@@ -99,9 +90,7 @@ export const OperatorReducer = (
         // fetched: true,
         // trucksOwned: action.payload,
         // allOtherTrucks: action.payload
-        name: action.payload,
-        cuisine_type: action.payload,
-        customer_rating: action.payload
+
       };
     case ERR:
       return {
@@ -112,31 +101,24 @@ export const OperatorReducer = (
     case DELETING_TRUCK:
       return {
         ...state,
-        isfetchingOperator: true,
-        fetched: false,
+        truck: action.payload,
       };
     case DELETED:
       return {
         ...state,
+        truck: action.payload,
         isfetchingOperator: false,
-        fetched: true,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
       };
 
       case EDITING_TRUCK:
       return {
         ...state,
-        isfetchingOperator: true,
-        fetched: false,
+        truck: action.payload
       };
     case EDITING_TRUCK_SUCCESS:
       return {
         ...state,
-        isfetchingOperator: false,
-        fetched: true,
-        trucksOwned: action.payload,
-        allOtherTrucks: action.payload,
+        truck: action.payload
       };
 
     default:

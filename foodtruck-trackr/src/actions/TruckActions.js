@@ -31,7 +31,7 @@ export const getTest = (response)  => {
 
 export const getTrucks = (getthattruck) => {
     const truckrequest =  axiosWithAuth()
-    .get('https://food-truck-back-end.herokuapp.com/operators/11/trucks')
+    .get('http://localhost:3333/trucks')
 
   return (dispatch) => {
     dispatch({
@@ -39,6 +39,7 @@ export const getTrucks = (getthattruck) => {
     });
     truckrequest
       .then((response) => {
+        console.log(response.data)
         dispatch({
           type: FETCHING_TRUCKS_SUCCESS,
           payload: response.data,
@@ -54,9 +55,9 @@ export const getTrucks = (getthattruck) => {
   };
 };
 
-export const addTruck = (id, truck) => {
+export const addTruck = (truck) => {
     const request =  axiosWithAuth()
-    .post(`operators/${id}/trucks`, truck)
+    .post(`http://localhost:3333/trucks`, truck)
     // console.log(response.header)
     return (dispatch) => {
       dispatch({
@@ -81,13 +82,13 @@ export const addTruck = (id, truck) => {
 
   
   export const deleteTruck = (id) => {
-    const request =  axiosWithAuth()
-    .delete(`https://food-truck-back-end.herokuapp.com/operators/6/trucks/${id}`)
-  
+    axiosWithAuth()
+    .delete(`http://localhost:3333/trucks/${id}`)
     return (dispatch) => {
       dispatch({
         type: DELETING_TRUCK
       })
+      
       .catch((error) => {
         dispatch({
           type: ERR,
@@ -97,85 +98,17 @@ export const addTruck = (id, truck) => {
   };
 };
 
-export const favTruck = (truck) => {
+export const editTruck = (truck) => {
   const request =  axiosWithAuth()
-  //this route doesnt exist yet but somethinbg like this?
-  .post(`diners/favtrucks/`, truck)
+  .put(`http://localhost:3333/trucks/${truck.id}`, truck)
 
-  return (dispatch) => {
-    dispatch({
-      type: DELETING_TRUCK,
-    });
-    request
-      .then((response) => {
-        dispatch({
-          type: DELETED,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: ERR,
-          payload: error.message,
-        });
-      });
-  };
-};
-
-export const deleteFavedTruck = (id) => {
-  const request =  axiosWithAuth()
-  //route doesnt exist yet
-  .delete(`diners/favtrucks/${id}`)
-
-  return (dispatch) => {
-    dispatch({
-      type: FAVING_TRUCK,
-    });
-    request
-      .then((response) => {
-        dispatch({
-          type: FAV_TRUCK_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FAV_TRUCK_FAIL,
-          payload: error.message,
-        });
-      });
-  };
-};
-
-// export const deleteFavedTruck = (id) => {
-//   const request = axiosWithAuth()
-//     //route doesnt exist yet
-//     .delete(`https://food-truck-back-end.herokuapp.com/diners/favtrucks/${id}`);
-
-//   return (dispatch) => {
-//     dispatch({
-//       type: DELETING_FAVED_TRUCK,
-//     });
-//     request
-//       .then((response) => {
-//         dispatch({
-//           type: DELETED_FAVED_TRUCK_SUCCESS,
-//           payload: response.data,
-//         });
-//       })
-//     })
-//   }
-// }
-
-export const editTruck = (id, truck) => {
-  const request =  axiosWithAuth()
-  .put(`operators/${id}/trucks`, truck)
 
   return (dispatch) => {
     dispatch({
       type: EDITING_TRUCK,
     });
     request
+    .then (res => console.log(res.data))
       .then((response) => {
         dispatch({
           type: EDITING_TRUCK_SUCCESS,

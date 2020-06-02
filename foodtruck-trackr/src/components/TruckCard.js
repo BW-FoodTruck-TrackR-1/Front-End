@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {axiosWithAuth} from '../utils/AxiosWithAuth'
-import * as TruckActions from "../actions/TruckActions";
+import {getTrucks, deleteTruck} from "../actions/TruckActions";
 import Truck from './Truck'
+// import DeleteTruck from "./DeleteTruck";
 
-const initialState = ([{}])
 
 const TruckCard = (props) => {
-
-  const [truck, setTruck] = useState(initialState)
   const [isLoading, setIsLoading] = useState(false)
-  const id = localStorage.getItem('id')
+  const [truckState, setTruckState] = useState([{}])
 
   
   useEffect(() => {
     setIsLoading(true)
-    axiosWithAuth()
-    .get(`http://localhost:3333/trucks`)
-    .then(response => {
-      setTruck(response.data)
-      console.log(response.data)
+      props.getTrucks()
+      setTruckState(props.trucks)
       setIsLoading(false)
-      console.log(truck)
+  },[props.trucks])
+
   
-    })
-  },[])
+
+  // const deleteTruck = () => {
+  //   axiosWithAuth()
+  //   .delete(`http://localhost:3333/trucks/${truck.id}`)
+  //   .then(res => console.log(res.data))
+  // }
  
 
 
@@ -36,25 +36,23 @@ const TruckCard = (props) => {
   return (
     <div>
       <div className="truck-card">
-        {truck.map((trucks) => {
-          return(
-            <div>
-              <h2>Truck Name: {trucks.name}</h2>
-              <p>Cuisine Type: {trucks.cuisine_type}</p>
-              <p>Customer Rating: {trucks.customer_rating}</p>
-            </div> 
-
-          
-          )
-        })}
+        <p>
+          {props.truck.map((truck) => {
+            return <Truck key={truck.id} truck={truck}/> 
+          })}
+        </p>
       </div>
     </div>
   );
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+      truck: state.truck,
+  }
+}
 
-export default connect(
-  state => state,
-  TruckActions
-)(TruckCard);
+export default connect
+(mapStateToProps,{getTrucks})
+(TruckCard);
