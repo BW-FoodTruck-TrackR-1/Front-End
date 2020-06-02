@@ -9,39 +9,21 @@ import Truck from './Truck'
 import TruckCard from'./TruckCard'
 import * as actionCreators from '../actions/TruckActions';
 
- function OperatorDashboard({getTrucks,trucks,getthattruck}){
-
-    // useEffect(() => {
-    //     getTrucks();
-    // }, []);
-    // console.log(getTrucks)
-    // console.log(trucks)
-  
+ function OperatorDashboard(props){
+    useEffect(() => {
+        props.getTrucks()
+      },[props.trucks])
+    
 
 return (
     <div>
 
         hi. this is the dashboard for operators
         <div>
-{/* 
-        {trucks.map(truck => (
-
-        <p>{trucks.cuisineType}</p>
-        )
-        )
-        } */}
-
-
 
         <AddTruck/>
-        <Deleter/>
         {/* <Truck/> */}
         <TruckCard/>
-            
-            {/* <OperatorTrucks />
-            <TruckForm /> */}
-              return <div key={trucks} truck={trucks} ></div>
-
         </div>
     </div>
 

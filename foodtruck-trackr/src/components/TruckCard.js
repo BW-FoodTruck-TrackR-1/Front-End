@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import {axiosWithAuth} from '../utils/AxiosWithAuth'
 import {getTrucks, deleteTruck} from "../actions/TruckActions";
 import Truck from './Truck'
-// import DeleteTruck from "./DeleteTruck";
 
 
 const TruckCard = (props) => {
@@ -19,16 +18,6 @@ const TruckCard = (props) => {
   },[props.trucks])
 
   
-
-  // const deleteTruck = () => {
-  //   axiosWithAuth()
-  //   .delete(`http://localhost:3333/trucks/${truck.id}`)
-  //   .then(res => console.log(res.data))
-  // }
- 
-
-
-
   if (isLoading) return (
     <p>Loading ...</p>
   )

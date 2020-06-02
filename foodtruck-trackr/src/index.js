@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
-import {OperatorReducer} from './reducers/TruckReducer';
+import {TruckReducer} from './reducers/TruckReducer';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from "react-router-dom";
 import thunk from 'redux-thunk'
 
-const store = createStore(OperatorReducer, applyMiddleware(thunk))
+const store = createStore(TruckReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
     <React.StrictMode>
