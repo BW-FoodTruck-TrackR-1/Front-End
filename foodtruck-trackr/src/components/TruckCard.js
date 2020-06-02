@@ -16,7 +16,7 @@ const TruckCard = (props) => {
   useEffect(() => {
     setIsLoading(true)
     axiosWithAuth()
-    .get(`https://food-truck-back-end.herokuapp.com/operators/16/trucks`)
+    .get(`http://localhost:3333/trucks`)
     .then(response => {
       setTruck(response.data)
       console.log(response.data)
