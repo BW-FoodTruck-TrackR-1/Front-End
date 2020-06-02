@@ -96,14 +96,14 @@ function AddTruck(props) {
     });
   };
 
-const addTruck = (id, truck) => {
+const addTruck = (truck) => {
   axiosWithAuth()
-  .post(`operators/${id}/trucks`, truck)
+  .post(`http://localhost:3333/trucks`, truck)
   .then(res => {console.log (res.data)})
 }
   const handleSubmit = (e) => {
     e.preventDefault()
-    addTruck(16, truckState)
+    addTruck(truckState)
   }
 
 
